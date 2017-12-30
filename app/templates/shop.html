@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Shop</title>
+</head>
+<body>
+    {% block body %}
+        <ul>
+        {% for item in items %}
+            <li>{{ item["name"] }} - {{ item["price"] }}$</li>
+        {% else %}
+            Couldn't find any items
+        {% endfor %}
+        </ul>
+    {% endblock %}
+</body>
+</html>

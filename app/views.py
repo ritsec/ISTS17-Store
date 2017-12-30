@@ -1,8 +1,9 @@
 """
     Endpoints for our ecomm shop
 """
+import ast
 import requests
-from flask import request, render_template, redirect, session
+from flask import request, render_template, redirect, session, abort
 from . import APP
 from .config import API_URL
 
@@ -50,12 +51,33 @@ def login():
 @APP.route('/shop', methods=['GET'])
 def shop():
     """List of items able to be boughten from the white team store"""
-    return render_template('shop.html')
+    # move this to a function
+    resp = requests.get("{}/{}".format(API_URL, "items"))
+    items = resp.json()['items']
+    return render_template('shop.html', items=items)
 
 @APP.route('/buy', methods=['POST'])
 def buy():
     """Buys a item from the white team store"""
-    pass
+    data = request.get_json()
+    if data is None:
+        data = request.form
+        if data is None:
+            abort(400)
+
+    # add error checking
+    item_id = data['item_id']
+    token = session['token']
+    post_data = dict()
+    post_data['token'] = token
+    post_data['item_id'] = item_id
+
+    # move this to a function
+    resp = requests.post("{}/{}".format(API_URL, "buy"), data=post_data)
+    print resp.json()
+    # add return variable that says item was bought
+    return redirect('/shop')
+
 
 @APP.route('/account', methods=['GET'])
 def expire_session():
