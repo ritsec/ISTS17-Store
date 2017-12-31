@@ -1,7 +1,6 @@
 """
     Endpoints for our ecomm shop
 """
-import ast
 import requests
 from flask import request, render_template, redirect, session, abort
 from . import APP
@@ -90,4 +89,25 @@ def expire_session():
 @APP.route('/transfer', methods=['POST'])
 def transfers():
     """Transfer money from one teams account to another"""
-    pass
+    if 'token' not in session:
+        return render_template('403.html')
+
+    data = request.get_json()
+    if data is None:
+        data = request.form
+        if data is None:
+            abort(400)
+
+    recipient = data['recipient']
+    amount = data['amount']
+    token = session['token']
+
+    post_data = dict()
+    post_data['recipient'] = recipient
+    post_data['amount'] = amount
+    post_data['token'] = token
+
+    resp = requests.post("{}/{}".format(API_URL, "transfer"), data=post_data)
+    print resp.json()
+    # add return variable that says transfer was complete
+    return redirect('/shop')
