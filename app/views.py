@@ -84,7 +84,21 @@ def expire_session():
     if 'token' not in session:
         return render_template('403.html')
     print session['token']
-    return render_template('account.html')
+
+    # get balance
+    post_data = dict()
+    post_data['token'] = session['token']
+    # move this to a function
+    resp = requests.post("{}/{}".format(API_URL, "get-balance"), data=post_data)
+    print resp.json()
+    balance = resp.json()['balance']
+
+    # get transactions
+    # move this to a function
+    resp = requests.post("{}/{}".format(API_URL, "transactions"), data=post_data)
+    print resp.json()
+    transactions = resp.json()['transactions']
+    return render_template('account.html', balance=balance, transactions=transactions)
 
 @APP.route('/transfer', methods=['POST'])
 def transfers():
