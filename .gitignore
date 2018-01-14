@@ -1,2 +1,5 @@
 *.pyc
 *.code-workspace
+.cache/
+TODO
+geckodriver.log

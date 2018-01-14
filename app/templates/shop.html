@@ -3,12 +3,23 @@
 <head>
     <meta charset="utf-8">
     <title>Shop</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
 </head>
 <body>
     {% block body %}
         <ul>
         {% for item in items %}
-            <li>{{ item["name"] }} - {{ item["price"] }}$</li>
+            <li>{{ item["name"] }} - {{ item["price"] }}$<button class="buy" id="{{item['uuid']}}">Buy</button></li>
         {% else %}
             Couldn't find any items
         {% endfor %}
