@@ -10,7 +10,6 @@ import time
 class TransferTests(AppTestCases):
     """Collection of tests for the tranfer functionality"""
     
-
     def test_transfer_splash(self):
         '''The transfer splash page should execute successfully'''
         self.login(self.TEST_USER, self.TEST_PASS)
@@ -34,6 +33,6 @@ class TransferTests(AppTestCases):
         amount_field.send_keys("1")
 
         self.client.find_element_by_name("transfer_form").submit()
-        assert str(self.client.title) == "Transfer"
 
-        time.sleep(10)
+        time.sleep(2)
+        assert str(self.client.title) == "Transfer"

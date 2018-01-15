@@ -5,7 +5,6 @@ import time
 import unittest
 from selenium import webdriver
 import xvfbwrapper
-from app import APP
 from app.config import API_URL
 
 class AppTestCases(unittest.TestCase):
@@ -20,12 +19,10 @@ class AppTestCases(unittest.TestCase):
         """
         Set up our testing client
         """
-        APP.testing = True
         self.client = webdriver.Firefox()
 
     def tearDown(self):
         self.client.get("{}/logout".format(self.APP_URL))
-        self.client.quit()
 
     def login(self, username, password):
         """
@@ -43,4 +40,4 @@ class AppTestCases(unittest.TestCase):
         password_field.send_keys(password)
 
         self.client.find_element_by_name("login_form").submit()
-        time.sleep(1)
+        time.sleep(2)
