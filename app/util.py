@@ -2,7 +2,7 @@
     Utility functions for the ecomm app
 """
 import requests
-from .config import API_URL, TEAM_ID
+from .config import API_URL
 from .errors import APIConnectionError, APIBadRequest, AuthError, BadRequest
 
 
@@ -29,7 +29,6 @@ def api_request(endpoint, data):
             resp.status_code, endpoint))
 
     resp_data = resp.json()
-    print resp_data
     return resp_data
 
 def validate_session(session):
@@ -47,8 +46,6 @@ def validate_session(session):
     token = session['token']
     post_data = dict()
     post_data['token'] = token
-    # dont hardcode team id
-    post_data['team_id'] = TEAM_ID
 
     resp = api_request("validate-session", post_data)
     if 'success' not in resp:

@@ -1,11 +1,14 @@
 $(function() {
     $('button').click(function(e) {
         console.log(e.target.id);
-        $.post('/buy', 
-        {item_id: e.target.id},
-        function(data, status){
-            alert(data);
-        }
+        $.post(
+            '/shop', 
+            {
+                item_id: e.target.id
+            },
+            function(data, status){
+                $("#result").html(data);
+            }
         )
     });
 });
