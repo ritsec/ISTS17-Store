@@ -5,6 +5,10 @@
     <title>Error</title>
 </head>
 <body>
-    error
+{% block body %}
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+{% endblock %}
 </body>
 </html>

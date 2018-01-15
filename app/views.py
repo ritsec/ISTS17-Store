@@ -2,18 +2,16 @@
     Endpoints for our ecomm shop
 """
 from flask import (request, render_template, redirect,
-                   session, abort, flash, send_from_directory)
+                   session, flash, send_from_directory)
 from . import APP
 from .config import TEAM_ID
-from .util import api_request
-from .errors import AuthError
+from .util import api_request, validate_session, validate_request
+from .errors import AuthError, BadRequest
 
 
 @APP.route('/js/<path:path>')
 def send_js(path):
-    """
-    Serve our js files
-    """
+    """Serve our js files"""
     return send_from_directory('js', path)
 
 @APP.route('/', methods=['GET'])
@@ -25,20 +23,12 @@ def index():
     :param token: the auth token for the account
     :returns: login.html if not authenitcated, account if so
     """
-    if 'token' not in session:
-        return redirect('/login')
+    try:
+        validate_session(session)
+    except AuthError:
+        redirect('/login')
 
-    token = session['token']
-    post_data = dict()
-    post_data['token'] = token
-    post_data['team_id'] = TEAM_ID
-
-    resp = api_request("validate-session", post_data)
-
-    if 'success' in resp:
-        return  redirect('/account')
-
-    return redirect('/login')
+    return redirect('/account')
 
 @APP.route('/login', methods=['GET', 'POST'])
 def login():
@@ -50,6 +40,7 @@ def login():
 
     :returns: error if bad creds, else redirects to account page
     """
+    error_msg = "Invalid username or password"
     if request.method == 'GET':
         return render_template('login.html')
 
@@ -57,11 +48,13 @@ def login():
     if data is None:
         data = request.form
         if data is None:
-            abort(400)
-
-    if 'username' not in data or 'password' not in data:
-        # error
-        pass
+            raise BadRequest("Missing parameters")
+    
+    required_params = ['username', 'password']
+    try:
+        validate_request(required_params, data)
+    except BadRequest:
+        return render_template('login.html', error=error_msg)
 
     username = data['username']
     password = data['password']
@@ -74,14 +67,31 @@ def login():
     post_data['password'] = password
     post_data['token'] = token
 
-    resp = api_request("login", post_data)
+    try:
+        resp = api_request("login", post_data)
+    except AuthError:
+        return render_template('login.html', error=error_msg)
 
     if 'success' in resp:
         session['token'] = token
         return  redirect('/account')
 
-    # return error here
-    return render_template('login.html')
+    error_msg = resp['error']
+    return render_template('login.html', error=error_msg)
+
+@APP.route('/logout', methods=['GET'])
+def logout():
+    """Log our user out, expire session in backend"""
+    try:
+        token = validate_session(session)
+    except AuthError:
+        return redirect('/login')
+
+    post_data = dict()
+    post_data['token'] = token
+    post_data['team_id'] = TEAM_ID
+    api_request('expire-session', post_data)
+    return redirect('/login')
 
 @APP.route('/shop', methods=['GET'])
 def shop():
@@ -93,15 +103,21 @@ def shop():
 @APP.route('/buy', methods=['POST'])
 def buy():
     """Buys a item from the white team store"""
+    token = validate_session(session)
+
     data = request.get_json()
     if data is None:
         data = request.form
         if data is None:
-            abort(400)
+            raise BadRequest("Missing parameters")
 
-    # add error checking
+    required_params = ['item_id']
+    # catch this and return in better manner?
+    # right now itll just go to error page, maybe stay on shop 
+    # but still display error
+    validate_request(required_params, data)
+
     item_id = data['item_id']
-    token = session['token']
     post_data = dict()
     post_data['token'] = token
     post_data['item_id'] = item_id
@@ -113,31 +129,26 @@ def buy():
     else:
         return 'Item bought', 200
 
-
 @APP.route('/account', methods=['GET'])
 def expire_session():
     """Get the info for a teams account, the balance, transactions etc."""
-    if 'token' not in session:
-        raise AuthError("No session token")
-
-    print session['token']
+    token = validate_session(session)
+    print token
     post_data = dict()
-    post_data['token'] = session['token']
+    post_data['token'] = token
 
-    # get balance
     resp = api_request("get-balance", post_data)
     balance = resp['balance']
 
-    # get transactions
     resp = api_request("transactions", post_data)
     transactions = resp['transactions']
+
     return render_template('account.html', balance=balance, transactions=transactions)
 
 @APP.route('/transfer', methods=['GET', 'POST'])
 def transfers():
     """Transfer money from one teams account to another"""
-    if 'token' not in session:
-        return render_template('403.html')
+    token = validate_session(session)
 
     if request.method == 'GET':
         return render_template('transfer.html')
@@ -146,11 +157,12 @@ def transfers():
     if data is None:
         data = request.form
         if data is None:
-            abort(400)
+            raise BadRequest("Missing parameters")
 
+    required_params = ['recipient', 'amount']
+    validate_request(required_params, data)
     recipient = data['recipient']
     amount = data['amount']
-    token = session['token']
 
     post_data = dict()
     post_data['recipient'] = recipient
@@ -161,8 +173,7 @@ def transfers():
 
     if 'transaction_id' not in resp:
         error = resp['error']
-        flash(error)
+        return render_template('transfer.html', error=error)
     else:
-        flash('Transaction completed')
-
-    return render_template('transfer.html')
+        message = "Transfer complete"
+        return render_template('transfer.html', complete=message)

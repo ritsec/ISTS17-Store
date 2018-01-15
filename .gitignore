@@ -3,3 +3,4 @@
 .cache/
 TODO
 geckodriver.log
+__pycache__

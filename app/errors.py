@@ -31,7 +31,12 @@ class AuthError(APPErrors):
     def __init__(self, message=None, status_code=403):
         APPErrors.__init__(self, message, status_code)
 
+class BadRequest(APPErrors):
+    """Error for when no params are sent to the endpoint"""
+    def __init__(self, message=None, status_code=400):
+        APPErrors.__init__(self, message, status_code)
+
 @APP.errorhandler(APPErrors)
 def handle_app_error(error):
     """Flask error handler for our internal errors"""
-    return render_template("error.html", error=error)
+    return render_template("error.html", error=error.message)

@@ -3,17 +3,14 @@
 <head>
     <meta charset="utf-8">
     <title>Transfer</title>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class=flashes>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
 </head>
 <body>
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    {% if complete %}
+        <div id="complete">{{ complete }}</div>
+    {% endif %}
     <form method='POST' action="/transfer">
         Team Number: <input type="text" name="recipient"><br />
         Amount: <input type="text" name="amount"> <br />
