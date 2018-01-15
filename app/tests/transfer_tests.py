@@ -11,14 +11,13 @@ import time
 class TransferTests(AppTestCases):
     """Collection of tests for the tranfer functionality"""
 
-    @pytest.mark.skip()
+    # @pytest.mark.skip()
     def test_transfer_splash(self):
         '''The authenticated transfer splash page should execute successfully'''
         self.login(self.TEST_USER, self.TEST_PASS)
         self.client.get("{}/{}".format(self.APP_URL, "transfer"))
         assert str(self.client.title) == "Transfer"
 
-    @pytest.mark.skip()
     def test_transfer(self):
         '''The transfer should execute successfully'''
         TEST_TEAM = "2"
@@ -39,7 +38,6 @@ class TransferTests(AppTestCases):
         assert str(self.client.find_element_by_id("complete"))
     
     
-    @pytest.mark.skip()
     def test_insufficient_transfer(self):
         '''The transfer should error'''
         TEST_TEAM = "2"
@@ -60,10 +58,9 @@ class TransferTests(AppTestCases):
         self.client.find_element_by_name("transfer_form").submit()
         assert str(self.client.find_element_by_id("error").text) == "Insufficient funds"
     
-    @pytest.mark.skip()       
     def test_unauthenticated_transfer(self):
         '''The transfer should error'''
         self.client.get("{}/{}".format(self.APP_URL, "transfer"))
-        assert str(self.client.find_element_by_class_name("error").text) == "No session token"
+        assert str(self.client.find_element_by_class_name("error").text) == "Unauthorized for this endpoint"
 
         

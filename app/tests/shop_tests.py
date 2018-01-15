@@ -10,17 +10,25 @@ class ShopTests(AppTestCases):
     """Collection of tests for the shop"""
 
     def test_shop_buy(self):
-        '''The shop page should splash succeed'''
+        '''The shop page should succeed'''
         self.login(self.TEST_USER, self.TEST_PASS)
         self.client.get("{}/{}".format(self.APP_URL, "shop"))
-        like = self.client.find_elements_by_class_name("buy")
-        print("ALL_SPANS: {}".format(like))
-        for x in range(0,len(like)):
-            if like[x].is_displayed():
-                like[x].click()
+        buttons = self.client.find_elements_by_class_name("buy")
+        for x in range(0,len(buttons)):
+            if buttons[x].is_displayed():
+                buttons[x].click()
                 time.sleep(2)
-                alert = self.client.switch_to_alert()
+                assert str(self.client.find_element_by_id("result").text) == "Item bought"
                 time.sleep(2)
-                alert.accept()
-                
-        assert str(self.client.find_element_by_id("content"))
+
+
+    def test_unauthenticated_shop_buy(self):
+        '''The shop page should fail'''
+        self.client.get("{}/{}".format(self.APP_URL, "shop"))
+        buttons = self.client.find_elements_by_class_name("buy")
+        for x in range(0,len(buttons)):
+            if buttons[x].is_displayed():
+                buttons[x].click()
+                time.sleep(2)
+                assert self.client.find_element_by_id("result")
+                time.sleep(2)
