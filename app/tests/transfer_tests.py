@@ -36,4 +36,26 @@ class TransferTests(AppTestCases):
         self.client.find_element_by_name("transfer_form").submit()
         assert str(self.client.title) == "Transfer"
 
-        time.sleep(10)
+        time.sleep(5)
+    
+    def test_insufficient_transfer(self):
+        '''The transfer should error'''
+        TEST_TEAM = "2"
+
+        self.login(self.TEST_USER, self.TEST_PASS)
+        self.client.get("{}/{}".format(self.APP_URL, "account"))
+
+        balance = float(self.client.find_element_by_id("balance").text)+1
+        
+        self.client.get("{}/{}".format(self.APP_URL, "transfer"))
+
+        team_field = self.client.find_element_by_id("team")
+        amount_field = self.client.find_element_by_id("amount")
+
+        team_field.send_keys(TEST_TEAM)
+        amount_field.send_keys("1")
+
+        self.client.find_element_by_name("transfer_form").submit()
+        # assert str(self.client.find_element_by_id("error") == "Insufficient Funds"
+        
+        time.sleep(5)

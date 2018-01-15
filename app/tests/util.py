@@ -25,7 +25,6 @@ class AppTestCases(unittest.TestCase):
 
     def tearDown(self):
         self.client.get("{}/logout".format(self.APP_URL))
-        self.client.quit()
 
     def login(self, username, password):
         """
