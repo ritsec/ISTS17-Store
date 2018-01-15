@@ -41,7 +41,7 @@ def validate_session(session):
     """
 
     if 'token' not in session:
-        raise AuthError("No session token")
+        raise AuthError("Unauthorized for this endpoint")
 
     token = session['token']
     post_data = dict()
