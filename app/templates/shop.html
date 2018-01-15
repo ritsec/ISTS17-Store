@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block title %}Shop{% endblock %}
 {% block content %}
+    <div id="result"></div>
     <ul>
     {% for item in items %}
-        <li>{{ item["name"] }} - {{ item["price"] }}$<button class="buy" id="{{item['uuid']}}">Buy</button></li>
+        <li>{{ item["name"] }} - {{ item["price"] }}$<button class="buy" id="{{ item['uuid'] }}">Buy</button></li>
     {% else %}
         Couldn't find any items
     {% endfor %}

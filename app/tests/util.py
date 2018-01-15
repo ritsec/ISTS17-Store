@@ -10,7 +10,7 @@ from app.config import API_URL
 class AppTestCases(unittest.TestCase):
     """Collection of unit tests for the different APP endpoints"""
 
-    TEST_USER = "team1"
+    TEST_USER = "team2"
     TEST_PASS = "Changeme-2018"
     API_URL = API_URL
     APP_URL = "http://127.0.0.1:8000"
@@ -19,10 +19,15 @@ class AppTestCases(unittest.TestCase):
         """
         Set up our testing client
         """
+        #self.vdisplay = xvfbwrapper.Xvfb()
+        #self.vdisplay.start()
         self.client = webdriver.Firefox()
+        self.client.implicitly_wait(10)
 
     def tearDown(self):
         self.client.get("{}/logout".format(self.APP_URL))
+        self.client.quit()
+        #self.vdisplay.stop()
 
     def login(self, username, password):
         """

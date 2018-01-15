@@ -9,13 +9,13 @@
   <body>
     <ul id="nav-bar">
       {% if not session.token %}
-        <li class="nav-item"><a href="login">Login</a></li>
+        <li class="nav-item"><a href="{{ url_for('login') }}">Login</a></li>
       {% endif %}
-      <li class="nav-item"><a href="shop">Shop</a></li>
+      <li class="nav-item"><a href="{{ url_for('shop') }}">Shop</a></li>
       {% if session.token %}
-        <li class="nav-item"><a href="account">Account</a></li>
-        <li class="nav-item"><a href="transfer">Transfer</a></li>
-        <li class="nav-item"><a href="logout">Logout</a></li>
+        <li class="nav-item"><a href="{{ url_for('account') }}">Account</a></li>
+        <li class="nav-item"><a href="{{ url_for('transfer') }}">Transfer</a></li>
+        <li class="nav-item"><a href="{{ url_for('logout') }}">Logout</a></li>
       {% endif %}
     </ul>
     <div id="content">{% block content %}{% endblock %}</div>

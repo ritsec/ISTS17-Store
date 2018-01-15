@@ -1,10 +1,11 @@
 """
     Endpoints for our ecomm shop
 """
+import random
+import string
 from flask import (request, render_template, redirect,
                    session, send_from_directory)
 from . import APP
-from .config import TEAM_ID
 from .util import api_request, validate_session, validate_request
 from .errors import AuthError, BadRequest
 
@@ -65,7 +66,8 @@ def login():
     password = data['password']
 
     # generate token here
-    token = 'heythere'
+    token = ''.join(random.choice(string.ascii_uppercase) for _ in range(10))
+
 
     post_data = dict()
     post_data['username'] = username
@@ -94,21 +96,18 @@ def logout():
 
     post_data = dict()
     post_data['token'] = token
-    post_data['team_id'] = TEAM_ID
     api_request('expire-session', post_data)
     session.clear()
     return redirect('/login')
 
-@APP.route('/shop', methods=['GET'])
+@APP.route('/shop', methods=['GET', 'POST'])
 def shop():
     """List of items able to be boughten from the white team store"""
     resp = api_request("items", None)
     items = resp['items']
-    return render_template('shop.html', items=items)
+    if request.method == 'GET':
+        return render_template('shop.html', items=items)
 
-@APP.route('/buy', methods=['POST'])
-def buy():
-    """Buys a item from the white team store"""
     try:
         token = validate_session(session)
     except AuthError:
@@ -121,9 +120,6 @@ def buy():
             raise BadRequest("Missing parameters")
 
     required_params = ['item_id']
-    # catch this and return in better manner?
-    # right now itll just go to error page, maybe stay on shop
-    # but still display error
     validate_request(required_params, data)
 
     item_id = data['item_id']
@@ -135,11 +131,12 @@ def buy():
 
     if 'transaction_id' not in resp:
         return resp['error'], 200
-    else:
-        return 'Item bought', 200
+
+    # send item name that was bought
+    return "Item bought", 200
 
 @APP.route('/account', methods=['GET'])
-def expire_session():
+def account():
     """Get the info for a teams account, the balance, transactions etc."""
     token = validate_session(session)
     print token
@@ -155,7 +152,7 @@ def expire_session():
     return render_template('account.html', balance=balance, transactions=transactions)
 
 @APP.route('/transfer', methods=['GET', 'POST'])
-def transfers():
+def transfer():
     """Transfer money from one teams account to another"""
     token = validate_session(session)
 
