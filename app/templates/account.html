@@ -6,7 +6,7 @@
 </head>
 <body>
     {% block body %}
-        <h3>Balance: {{ balance }}</h3>
+        <h3>Balance: <p id="balance">{{ balance }}</p></h3>
         <ul>
         {% for tx in transactions %}
             <li>{{ tx["time"] }} - {{ tx["src"] }} - {{ tx["dst"] }} - {{ tx["amount"] }}$ - {{ tx["desc"] }}</li>

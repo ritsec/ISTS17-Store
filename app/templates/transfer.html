@@ -14,9 +14,9 @@
     {% endwith %}
 </head>
 <body>
-    <form method='POST' action="/transfer">
-        Team Number: <input type="text" name="recipient"><br />
-        Amount: <input type="text" name="amount"> <br />
+    <form method='POST' name="transfer_form" action="/transfer">
+        Team Number: <input id="team" type="text" name="recipient"><br />
+        Amount: <input id="amount" type="text" name="amount"> <br />
         <input type="submit" value="Submit">
     </form><br />
 </body>
