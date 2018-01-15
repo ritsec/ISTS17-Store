@@ -2,7 +2,7 @@
     Endpoints for our ecomm shop
 """
 from flask import (request, render_template, redirect,
-                   session, flash, send_from_directory)
+                   session, send_from_directory)
 from . import APP
 from .config import TEAM_ID
 from .util import api_request, validate_session, validate_request
@@ -13,6 +13,11 @@ from .errors import AuthError, BadRequest
 def send_js(path):
     """Serve our js files"""
     return send_from_directory('js', path)
+
+@APP.route('/css/<path:path>')
+def send_css(path):
+    """Serve our css files"""
+    return send_from_directory('css', path)
 
 @APP.route('/', methods=['GET'])
 def index():
@@ -49,7 +54,7 @@ def login():
         data = request.form
         if data is None:
             raise BadRequest("Missing parameters")
-    
+
     required_params = ['username', 'password']
     try:
         validate_request(required_params, data)
@@ -91,6 +96,7 @@ def logout():
     post_data['token'] = token
     post_data['team_id'] = TEAM_ID
     api_request('expire-session', post_data)
+    session.clear()
     return redirect('/login')
 
 @APP.route('/shop', methods=['GET'])
@@ -103,7 +109,10 @@ def shop():
 @APP.route('/buy', methods=['POST'])
 def buy():
     """Buys a item from the white team store"""
-    token = validate_session(session)
+    try:
+        token = validate_session(session)
+    except AuthError:
+        return redirect('/login')
 
     data = request.get_json()
     if data is None:
@@ -113,7 +122,7 @@ def buy():
 
     required_params = ['item_id']
     # catch this and return in better manner?
-    # right now itll just go to error page, maybe stay on shop 
+    # right now itll just go to error page, maybe stay on shop
     # but still display error
     validate_request(required_params, data)
 
@@ -159,6 +168,7 @@ def transfers():
         if data is None:
             raise BadRequest("Missing parameters")
 
+    # validate all our parameters are present, throw error if not
     required_params = ['recipient', 'amount']
     validate_request(required_params, data)
     recipient = data['recipient']

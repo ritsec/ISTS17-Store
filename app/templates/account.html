@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Account</title>
-</head>
-<body>
-    {% block body %}
-        <h3>Balance: <p id="balance">{{ balance }}</p></h3>
-        <ul>
-        {% for tx in transactions %}
-            <li>{{ tx["time"] }} - {{ tx["src"] }} - {{ tx["dst"] }} - {{ tx["amount"] }}$ - {{ tx["desc"] }}</li>
-        {% else %}
-            No transactions yet
-        {% endfor %}
-        </ul>
-    {% endblock %}
-</body>
-</html>
+{% extends "layout.html" %}
+{% block title %}Account{% endblock %}
+{% block content %}
+    <h3>Balance: <p id="balance">{{ balance }}</p></h3>
+    <ul>
+    {% for tx in transactions %}
+        <li>{{ tx["time"] }} - {{ tx["src"] }} - {{ tx["dst"] }} - {{ tx["amount"] }}$ - {{ tx["desc"] }}</li>
+    {% else %}
+        No transactions yet
+    {% endfor %}
+    </ul>
+{% endblock %}
