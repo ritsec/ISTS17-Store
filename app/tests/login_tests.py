@@ -6,7 +6,6 @@ from app.tests.util import AppTestCases
 class LoginTests(AppTestCases):
     """Collection of tests for the login functionality"""
 
-
     def test_successful_login(self):
         '''This login should execute successfully'''
         self.login(self.TEST_USER, self.TEST_PASS)
