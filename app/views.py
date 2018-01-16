@@ -36,6 +36,39 @@ def index():
 
     return redirect('/account')
 
+@APP.route('/search', methods=['POST'])
+def search():
+    """
+    Allows users to filter the items by certain key words
+
+    :param search: the parameter to search by
+
+    :returns shop page with list of filtered items
+    """
+    error_msg = "Please enter a search parameter"
+    resp = api_request("items", None)
+    items = resp['items']
+
+    data = request.get_json()
+    if data is None:
+        data = request.form
+        if data is None:
+            raise BadRequest("Missing parameters")
+
+    required_params = ['search']
+    try:
+        validate_request(required_params, data)
+    except BadRequest:
+        return render_template('shop.html', error=error_msg)
+
+    search_param = str(data['search'])
+    filtered_items = []
+    for item in items:
+        if search_param.lower() in str(item['name']).lower():
+            filtered_items.append(item)
+
+    return render_template('shop.html', items=filtered_items)
+
 @APP.route('/login', methods=['GET', 'POST'])
 def login():
     """
@@ -132,8 +165,13 @@ def shop():
     if 'transaction_id' not in resp:
         return resp['error'], 200
 
-    # send item name that was bought
-    return "Item bought", 200
+    boughten_item = ""
+    for item in items:
+        print item
+        if int(item['uuid']) == int(item_id):
+            boughten_item = item['name']
+
+    return "{} bought".format(boughten_item), 200
 
 @APP.route('/account', methods=['GET'])
 def account():

@@ -61,6 +61,6 @@ class TransferTests(AppTestCases):
     def test_unauthenticated_transfer(self):
         '''The transfer should error'''
         self.client.get("{}/{}".format(self.APP_URL, "transfer"))
-        assert str(self.client.find_element_by_class_name("error").text) == "Unauthorized for this endpoint"
+        assert str(self.client.find_element_by_id("error").text) == "Unauthorized for this endpoint"
 
         
