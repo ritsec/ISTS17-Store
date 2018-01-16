@@ -28,6 +28,7 @@ def index():
     else go to the account page
 
     :param token: the auth token for the account
+
     :returns: login.html if not authenitcated, account if so
     """
     try:
@@ -139,6 +140,51 @@ def logout():
     api_request('expire-session', post_data)
     session.clear()
     return redirect('/login')
+
+@APP.route('/update-password', methods=['GET', 'POST'])
+def update_password():
+    """
+    Update the users password
+
+    :param old: the users old password
+    :param new: the new password to be assigned
+
+    :returns rendered update_password.html page
+    """
+    if request.method == 'GET':
+        return render_template('update_password.html')
+
+    try:
+        token = validate_session(session)
+    except AuthError:
+        return redirect('/login')
+
+    data = request.get_json()
+    if data is None:
+        data = request.form
+        if data is None:
+            raise BadRequest("Missing parameters")
+
+    required_params = ['old', 'new']
+    validate_request(required_params, data)
+
+    old_password = data['old']
+    new_password = data['new']
+    post_data = dict()
+    post_data['token'] = token
+    post_data['old_password'] = old_password
+    post_data['new_password'] = new_password
+
+    try:
+        resp = api_request("update-password", post_data)
+    except AuthError as e:
+        return render_template('update_password.html', error=e.message)
+
+    if 'success' in resp:
+        return render_template('update_password.html', complete=resp['success'])
+    else:
+        # something bad happened, this should be reached
+        return render_template('update_password.html', error="Something is funky")
 
 @APP.route('/shop', methods=['GET', 'POST'])
 def shop():

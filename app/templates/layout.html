@@ -15,6 +15,7 @@
       {% if session.token %}
         <li class="nav-item"><a href="{{ url_for('account') }}">Account</a></li>
         <li class="nav-item"><a href="{{ url_for('transfer') }}">Transfer</a></li>
+        <li class="nav-item"><a href="{{ url_for('update_password') }}">Update Password</a></li>
         <li class="nav-item"><a href="{{ url_for('logout') }}">Logout</a></li>
       {% endif %}
     </ul>

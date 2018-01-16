@@ -22,7 +22,7 @@ def api_request(endpoint, data):
         raise APIBadRequest("Bad request sent to API")
 
     if resp.status_code == 403:
-        raise AuthError("Unauthorized for this endpoint")
+        raise AuthError(resp.json()['error'])
 
     elif resp.status_code != 200:
         raise APIConnectionError("API returned {} for /{}".format(
