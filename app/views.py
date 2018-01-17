@@ -14,12 +14,12 @@ from .errors import AuthError, BadRequest
 @APP.route('/static/js/<path:path>')
 def send_js(path):
     """Serve our js files"""
-    return send_from_directory('js', path)
+    return send_from_directory('static/js', path)
 
 @APP.route('/static/css/<path:path>')
 def send_css(path):
     """Serve our css files"""
-    return send_from_directory('css', path)
+    return send_from_directory('static/css', path)
 
 @APP.route('/', methods=['GET'])
 def index():
