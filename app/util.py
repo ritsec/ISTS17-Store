@@ -62,6 +62,6 @@ def validate_request(params, data):
     """
     for p in params:
         if p not in data:
-            raise BadRequest("Missing {}".format(p), status_code=400)
+            raise BadRequest("Missing {}".format(p))
 
     return True

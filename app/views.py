@@ -2,8 +2,8 @@
     Endpoints for our ecomm shop
 """
 import random
-import requests
 import string
+import requests
 from flask import (request, render_template, redirect,
                    session, send_from_directory)
 from . import APP
@@ -109,7 +109,6 @@ def login():
     # generate token here
     token = ''.join(random.choice(string.ascii_uppercase) for _ in range(10))
 
-
     post_data = dict()
     post_data['username'] = username
     post_data['password'] = password
@@ -165,11 +164,16 @@ def update_password():
         if data is None:
             raise BadRequest("Missing parameters")
 
-    required_params = ['old', 'new']
+    required_params = ['old', 'new', 'confirm']
     validate_request(required_params, data)
 
     old_password = data['old']
     new_password = data['new']
+    confirmed_password = data['confirm']
+
+    if new_password != confirmed_password:
+        return render_template('update_password.html', error="New passwords don't match")
+
     post_data = dict()
     post_data['token'] = token
     post_data['old_password'] = old_password
@@ -188,7 +192,15 @@ def update_password():
 
 @APP.route('/shop', methods=['GET', 'POST'])
 def shop():
-    """List of items able to be boughten from the white team store"""
+    """
+    List of items able to be boughten from the white team store
+    GET - returns the shop with the associated items
+    POST - for buying an item, returns the result ( if it was bought or not)
+
+    :param item_id: the id of the item being bought
+
+    :returns rendered shop.html page with items and associated result
+    """
     resp = api_request("items", None)
     items = resp['items']
     if request.method == 'GET':
@@ -197,7 +209,7 @@ def shop():
     try:
         token = validate_session(session)
     except AuthError:
-        return redirect('/login')
+        return 'Please log in before trying to buy an item', 200
 
     data = request.get_json()
     if data is None:
@@ -244,7 +256,16 @@ def account():
 
 @APP.route('/transfer', methods=['GET', 'POST'])
 def transfer():
-    """Transfer money from one teams account to another"""
+    """
+    Transfer money from one teams account to another
+    GET - returns the transfer page
+    POST - for executing a transfer, will return the page with an error or complete message
+
+    :param recipient: team number of who is recieving the transfer
+    :param amount: amount to transfer
+
+    :returns rendered transfer.html page with associated messages
+    """
     token = validate_session(session)
 
     if request.method == 'GET':
