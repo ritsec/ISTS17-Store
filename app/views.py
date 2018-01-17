@@ -11,12 +11,12 @@ from .util import api_request, validate_session, validate_request
 from .errors import AuthError, BadRequest
 
 
-@APP.route('/js/<path:path>')
+@APP.route('/static/js/<path:path>')
 def send_js(path):
     """Serve our js files"""
     return send_from_directory('js', path)
 
-@APP.route('/css/<path:path>')
+@APP.route('/static/css/<path:path>')
 def send_css(path):
     """Serve our css files"""
     return send_from_directory('css', path)
