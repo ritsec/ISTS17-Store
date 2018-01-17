@@ -209,6 +209,8 @@ def shop():
     try:
         token = validate_session(session)
     except AuthError:
+        # this is returned to the js function that does a post request to /shop
+        # the js function then displays this in the <div id="result">
         return 'Please log in before trying to buy an item', 200
 
     data = request.get_json()
@@ -236,12 +238,18 @@ def shop():
         if int(item['uuid']) == int(item_id):
             boughten_item = item['name']
 
+    # this is returned to the js function that does a post request to /shop
+    # the js function then displays this in the <div id="result">
     return "{} bought".format(boughten_item), 200
 
 @APP.route('/account', methods=['GET'])
 def account():
     """Get the info for a teams account, the balance, transactions etc."""
-    token = validate_session(session)
+    try:
+        token = validate_session(session)
+    except AuthError:
+        return redirect('/login')
+
     print token
     post_data = dict()
     post_data['token'] = token
@@ -266,7 +274,10 @@ def transfer():
 
     :returns rendered transfer.html page with associated messages
     """
-    token = validate_session(session)
+    try:
+        token = validate_session(session)
+    except AuthError:
+        return redirect('/login')
 
     if request.method == 'GET':
         return render_template('transfer.html')
