@@ -2,7 +2,7 @@
     Utility functions for the ecomm app
 """
 import requests
-from .config import API_URL
+from .config import BANK_API_URL, AUTH_API_URL, AUTH_ENDPOINTS
 from .errors import APIConnectionError, APIBadRequest, AuthError, BadRequest
 
 
@@ -16,7 +16,11 @@ def api_request(endpoint, data):
     :returns resp: the api response
     """
     print data
-    url = "{}/{}".format(API_URL, endpoint)
+    if endpoint in AUTH_ENDPOINTS:
+        url = "{}/{}".format(AUTH_API_URL, endpoint)
+    else:
+        url = "{}/{}".format(BANK_API_URL, endpoint)
+
     resp = requests.post(url, data=data)
     if resp.status_code == 400:
         raise APIBadRequest("Bad request sent to API")
