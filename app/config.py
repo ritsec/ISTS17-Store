@@ -2,6 +2,9 @@
     Config parameters for our web app
 """
 
-API_URL = "http://lilbite.org:5000"
-SECRET_KEY = 'thenotsosecretkey'    # can use this as a vector, each team has a different
-                                    # key, if you can guess the scheme you can pop other teams, just an idea
+BANK_API_URL = "http://lilbite.org:5000"
+AUTH_API_URL = "http://lilbite.org:9000"
+SECRET_KEY = 'thenotsosecretkey'
+
+AUTH_ENDPOINTS = ['validate-session', 'login', 'update-password',
+                  'expire-session', 'update-session', 'pub-key']

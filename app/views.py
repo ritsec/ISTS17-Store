@@ -1,8 +1,6 @@
 """
     Endpoints for our ecomm shop
 """
-import random
-import string
 import requests
 from flask import (request, render_template, redirect,
                    session, send_from_directory)
@@ -106,21 +104,17 @@ def login():
     username = data['username']
     password = data['password']
 
-    # generate token here
-    token = ''.join(random.choice(string.ascii_uppercase) for _ in range(10))
-
     post_data = dict()
     post_data['username'] = username
     post_data['password'] = password
-    post_data['token'] = token
 
     try:
         resp = api_request("login", post_data)
     except AuthError:
         return render_template('login.html', error=error_msg)
 
-    if 'success' in resp:
-        session['token'] = token
+    if 'token' in resp:
+        session['token'] = resp['token']
         return  redirect('/account')
 
     error_msg = resp['error']
