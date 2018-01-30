@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $("#login-modal").modal('show');
+});
+
 $(function() {
     $('button').click(function(e) {
         console.log(e.target.id);
@@ -12,3 +16,6 @@ $(function() {
         )
     });
 });
+
+
+   
