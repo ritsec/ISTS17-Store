@@ -1,12 +1,44 @@
+<head>
+    <link rel="stylesheet" href="css/login.css">
+</head>
 {% extends "layout.html" %}
 {% block title %}Login{% endblock %}
 {% block content %}
-    {% if error %}
+
+
+<div id="css-only-modals">
+	<input id="modal1" class="css-only-modal-check" type="checkbox" checked/>
+	<div class="css-only-modal">
+		<label for="modal1" class="css-only-modal-close"><i class="fa fa-times fa-2x"></i>X</label>
+		<h2>Login to the Spaceshop!</h2>
+		<hr/>
+		{% if error %}
         <div id="error">{{ error }}</div>
-    {% endif %}
-    <form method='POST' name="login_form" action="/login">
+        {% endif %}
+        <form method='POST' name="login_form" action="/login">
         Username: <input id="username" type="text" name="username"><br />
         Password: <input id="password" type="password" name="password"><br />
-        <input type="submit" value="Submit">
-    </form><br />
+        <input type="submit" value="Beam me up, fam">
+        </form>
+        <label for="modal1" class="css-only-modal-btn btn btn-primary btn-lg">Nevermind</label>
+            
+    </div>
+<div id="screen-shade"></div>
+</div>
+
+
+<section class="hero">
+    <h2>Black Hole Friday Sale!</h2>
+    <h4>Limited time only. Parts up to 80% off!</h4>
+    <a class="button corner-button">View Sale</a>
+</section>
+
+<section class="promotions">
+    <h2>Most secure wallet in the universe!</h2>
+    
+</section>
+
 {% endblock %}
+
+
+

@@ -7,18 +7,33 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
+    <header>
+    {% if not session.token %}
     <ul id="nav-bar">
-      {% if not session.token %}
-        <li class="nav-item"><a href="{{ url_for('login') }}">Login</a></li>
-      {% endif %}
-      <li class="nav-item"><a href="{{ url_for('shop') }}">Shop</a></li>
-      {% if session.token %}
-        <li class="nav-item"><a href="{{ url_for('account') }}">Account</a></li>
-        <li class="nav-item"><a href="{{ url_for('transfer') }}">Transfer</a></li>
-        <li class="nav-item"><a href="{{ url_for('update_password') }}">Update Password</a></li>
-        <li class="nav-item"><a href="{{ url_for('logout') }}">Logout</a></li>
-      {% endif %}
+        <li class="nav-item"><a class="left-nav-item" href="{{ url_for('shop') }}">Shop</a></li>
+        <span class="bar"></span>
+        <li class="nav-item"><a class="home" href="/">SPACESHOP</a></li>
+        <span class="bar"></span>
+        <li class="nav-item"><a class="right-nav-item" href="{{ url_for('login') }}">Login</a></li>
     </ul>
+    {% endif %}
+
+    {% if session.token %}
+    <ul id="nav-bar">
+      <li class="nav-item"><a class="left-nav-item" href="{{ url_for('shop') }}">Team 1</a></li>
+      <span class="bar"></span>
+      <li class="nav-item"><a class="home" href="/">SPACESHOP</a></li>
+      <span class="bar"></span>
+      <li class="nav-item"><a class="right-nav-item" href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+    <ul id="sub-nav-bar">
+          <li class="sub-nav-item"><a href="{{ url_for('shop') }}">Shop</a></li>
+          <li class="sub-nav-item"><a href="{{ url_for('transfer') }}">Send</a></li>
+          <li class="sub-nav-item"><a href="{{ url_for('transfer') }}">Help</a></li>
+    </ul>
+    {% endif %}
+    
+    </header>
     <div id="content">{% block content %}{% endblock %}</div>
   </body>
 </html>

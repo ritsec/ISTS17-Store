@@ -1,35 +1,219 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*actual css*/
+
+
+
+
+
+html{
+    font-family: 'Arapey', serif;
+    font-size: 1rem;
+     
+}
 #error {
     color: red;
     font-weight: bold;
 }
+header{
+    font-family: 'Rubik', sans-serif;
+    background: #333;
 
+    padding: 1% 2%;
+}
 #nav-bar {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
+#sub-nav-bar{
+    list-style-type: none;
+text-align: center;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 1.2rem;
+
+}
+.sub-nav-item{
+    display: inline;
+}
 .nav-item {
-    float: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.nav-item .home{
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: -10px; /*trailing space from letter spacing*/
+}
+
+.left-nav-item, .right-nav-item{
+    width: 10%;
+}
+.bar{
+    background: white;
+    height: 3px;
+    width: 35%;
+
 }
 
 .nav-item a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 1.2rem 16px;
     text-decoration: none;
 }
 
-.nav-item a:hover {
-    background-color: #111;
+.sub-nav-item a{
+    color: white;
+    text-decoration: none;
+    padding: 1.2rem .7rem;
 }
+
 
 
 .search-container input[type=text] {
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
+}
+
+
+#css-only-modals {
+	position: fixed;
+	pointer-events: none;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10000000;
+	text-align: center;
+	white-space: nowrap;
+    height: 100%;
+
+}
+
+#css-only-modals:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -0.25em;
+}
+
+.css-only-modal-check {
+	pointer-events: auto;
+}
+
+.css-only-modal-check:checked ~ .css-only-modal {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.css-only-modal {
+	width: 40%;
+	background: #FFF;
+	z-index: 1;
+	display: inline-block;
+	position: relative;
+	pointer-events: auto;
+	padding: 25px;
+	text-align: right;
+	border-radius: 4px;
+	white-space: normal;
+	display: inline-block;
+	vertical-align: middle;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.css-only-modal h2 {
+	text-align: center;
+}
+
+.css-only-modal p {
+	text-align: left;
+}
+
+.css-only-modal-close {
+	position: absolute;
+	top: 25px;
+	right: 25px;
+}
+
+.css-only-modal-check {
+	display: none;
+}
+
+.css-only-modal-check:checked ~ #screen-shade {
+	opacity: 0.5;
+	pointer-events: auto;
+}
+
+#screen-shade {
+	opacity: 0;
+	background: #000;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	pointer-events: none;
+	transition: opacity 0.8s;
 }
