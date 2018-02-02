@@ -225,6 +225,8 @@ def shop():
     post_data = dict()
     post_data['token'] = token
     post_data['item_id'] = item_id
+    if 'enemy_id' in data:
+        post_data['enemy_id'] = data['enemy_id']
 
     resp = api_request("buy", post_data)
 
