@@ -3,28 +3,70 @@
 </head>
 {% extends "layout.html" %} {% block title %}Login{% endblock %} {% block content %}
 
+<!--
+<div id="css-only-modals">
+        <input id="modal1" class="css-only-modal-check" type="checkbox" checked/>
+        <div class="css-only-modal">
+            <label for="modal1" class="css-only-modal-close"><i class="fa fa-times fa-2x"></i>X</label>
+            <h2>Login to the Spaceshop!</h2>
+            <hr/>
+            {% if error %}
+            <div id="error">{{ error }}</div>
+            {% endif %}
+            <form method='POST' name="login_form" action="/login">
+            Username: <input id="username" type="text" name="username"><br />
+            Password: <input id="password" type="password" name="password"><br />
+            <input type="submit" value="Beam me up, fam">
+            </form>
+            <label for="modal1" class="css-only-modal-btn btn btn-primary btn-lg">Nevermind</label>
+                
+        </div>
+    <div id="screen-shade"></div>
+    </div>
+-->
+<div id="modals">
+        <input id="modal1" class="modal-check" type="checkbox" checked/>
+        <div class="modal">
+            <label for="modal1" class="modal-close">X</label>
+            <h2>Finna go hyperspace</h2>
+            <hr/>
+             {% if error %}
+                <div id="error">{{ error }}</div>
+            {% endif %}
+            <form method='POST' class="login-form" name="login_form" action="/login">
+                <input id="username" type="text" name="username"><br />
+                <input id="password" type="password" name="password"><br />
+                <button type="submit">Beam me up, fam</button>
+                </form>
+    
+        </div>
+        
+    <div id="screen-shade"></div>
+    </div>
 
+
+
+<!--
 <div id="modals">
 	<input id="modal1" class="modal-check" type="checkbox" checked/>
 	<div class="modal">
 		<label for="modal1" class="modal-close">X</label>
 		<h2>Finna go hyperspace</h2>
         <hr/>
-        
-		{% if error %}
-        <div id="error">{{ error }}</div>
+		 {% if error %}
+            <div id="error">{{ error }}</div>
         {% endif %}
-
-        <form method='POST' name="login-form" class="login-form" action="/login">
-            <input id="username" type="text" placeholder="username"/>
-            <input id="password" type="password" placeholder="password"/>
-            <button>Beam me up, fam</button>
+        <form method='POST' name="login_form" class="login-form" action="/login">
+            <input id="username" type="text" placeholder="username">
+            <input id="password" type="password" placeholder="password">
+            <input type="submit" value="Beam me up, fam">
       
           </form>
 
     </div>
+    
 <div id="screen-shade"></div>
-</div>
+</div>-->
 
 
 <section class="hero">

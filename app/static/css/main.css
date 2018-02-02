@@ -75,23 +75,29 @@ header{
 
 a{    font-family: 'Rubik', sans-serif;}
 
-#nav-bar {
+#nav-bar, #nav-bar-auth {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+	width: 100%;
+	cursor: pointer;
 }
 
-#sub-nav-bar{
+
+#sub-nav-bar, #sub-nav-bar-auth{
     list-style-type: none;
 text-align: center;
     width: 100%;
     padding: 0;
-    padding-bottom: 1.2rem;
+	padding-bottom: 1.2rem;
+	cursor: pointer;
 
+}
+#nav-bar-auth *, #sub-nav-bar-auth *{
+	color: #333;
 }
 .sub-nav-item{
     display: inline;
@@ -115,9 +121,11 @@ text-align: center;
     background: white;
     height: 3px;
     width: 35%;
+}
+#nav-bar-auth .bar, #sub-nav-bar-auth .bar{
+    background: #333;
 
 }
-
 .nav-item a {
     display: block;
     color: white;

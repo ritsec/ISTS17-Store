@@ -1,0 +1,34 @@
+.account-info{
+
+    color: #333;
+    background-size: 100%;
+
+    padding: 20vh 0 10vw;
+    text-align: center;
+}
+
+.account-info h3{
+    font-family: 'Rubik', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.history{
+    width: 60%;
+    margin: 0 auto;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+.history .larger{
+    font-size: 1.2rem;
+}
+
+.history h4 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+
+

@@ -1,0 +1,250 @@
+#modals {
+	position: fixed;
+	pointer-events: none;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10000000;
+	text-align: center;
+	white-space: nowrap;
+    height: 100%;
+
+}
+
+#modals:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -0.25em;
+}
+
+.modal-check {
+	pointer-events: auto;
+}
+
+.modal-check:checked ~ .modal {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modal {
+	width: 40%;
+	background: #FFF;
+	z-index: 1;
+	display: inline-block;
+	position: relative;
+	pointer-events: auto;
+	padding: 25px;
+	text-align: right;
+	border-radius: 4px;
+	white-space: normal;
+	display: inline-block;
+	vertical-align: middle;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.login-form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #565656;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff; 
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.login-form button:hover{
+    background: #666;
+    transition: all .2s;
+}
+
+.modal h2 {
+    text-align: left;
+    font-size: 1.4rem;
+    font-family: 'Rubik', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.modal p {
+	text-align: left;
+}
+
+.modal-close {
+    text-align: right;
+    font-family: 'Rubik', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    background: #565656;
+    color: white;
+    padding: .2rem .5rem;
+    border-radius: 5px;
+}
+
+.modal-close:hover{
+    background: #666;
+    transition: all .2s;
+}
+
+.login-form input {
+    font-family: 'Rubik', sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.modal-check {
+	display: none;
+}
+
+.modal-check:checked ~ #screen-shade {
+	opacity: 0.6;
+	pointer-events: auto;
+}
+
+#screen-shade {
+	opacity: 0;
+	background: #000;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	pointer-events: none;
+	transition: opacity 0.8s;
+}
+
+/*-------*/
+
+
+.hero{
+    background: url(/assets/hero.jpg) no-repeat;
+    background-size: 100%;
+    color: white;
+    padding: 30vh 0 30vh 10vw;
+
+}
+
+.hero h2{
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 4.3rem;
+}
+.hero h4{
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 2.7rem;
+}
+
+.hero a{
+    display: inline-block;
+
+}
+
+.we-buy-mined-stuff{
+    color: #333;
+    text-align: left;
+
+    padding: 10vw;
+
+}
+
+
+.we-buy-mined-stuff h2{
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 4.3rem;
+
+}
+.we-buy-mined-stuff h5{
+    font-size: 1.7rem;
+    font-weight: bold;
+    line-height: 2rem;
+
+}
+.we-buy-mined-stuff img{
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.featured-items{
+    padding: 0 10vw 10vw;
+}
+
+.featured-items h2{
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 4.3rem;
+
+}
+
+.items{
+    padding: 3rem 0;
+    font-family: 'Rubik', sans-serif;
+    display: flex;
+}
+
+.items .item{
+    padding: 4vw 3vw;
+
+}
+
+.item p{
+    color: #333;
+    font-size: 1.5rem;
+}
+.item .title{
+    font-weight: bold;
+}
+
+.big-item{
+    text-align: left;
+    flex: 2;
+    display: flex;
+    align-items: flex-start;
+
+    
+    
+}
+
+.big-item img{
+
+    width: 300px;
+    height: 300px;
+}
+
+.small-item{
+    text-align: left;
+    border-left: 2px solid #333;
+    
+}
+
+.small-item img{
+    margin: 0 auto;
+    display: block;
+    width: 150px;
+    padding-bottom: 2rem;
+}
+
+.featured-items {
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+
+
