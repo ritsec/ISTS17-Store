@@ -150,6 +150,8 @@ text-align: center;
 	border-image-width: .75rem;
 	cursor: pointer;
 	text-transform: uppercase;
+	text-decoration: none;
+	color: white;
 
   }
 
@@ -170,6 +172,7 @@ text-align: center;
 	cursor: pointer;
 	text-transform: uppercase;
 	color: #333;
+	text-decoration: none;
 
   }
 

@@ -3,6 +3,13 @@
     </head>
     {% extends "layout.html" %} {% block title %}Shop{% endblock %} {% block content %}
 
+    {% if not session.token %}
+    <section class="fill">
+
+
+    </section>
+    {% endif %}
+
 <section class="search">
      <div class="search-container">
         <form method="POST" name="search_form" action="/search">
@@ -22,7 +29,33 @@
         <div class="item">
             <img src="/assets/item-{{item['uuid']}}.jpg">
         
-            <a class="item-listing item-{{ item['uuid'] }}"><span class="bold">{{ item["name"] }}</span><br> {{ item["price"] }}$<br><button class="buy" id="{{ item['uuid'] }}">TEAM </button></a>
+            <a class="item-listing item-{{ item['uuid'] }}"><span class="bold">{{ item["name"] }}</span><br> {{ item["price"] }}$<br>
+                
+                <form method="POST" name="target-form" action="/shop">
+                    <input class="hideme" type="text" value="{{ item['uuid'] }}" name="item_id">
+                    <!--input class="enemy-show" type="text" placeholder="Target" name="enemy_id"-->
+                    <span class="enemy-show">
+                            Target: 
+                <select class="target" name="enemy_id"> 
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+
+                          </select>
+                        </span>
+
+                    <button class="corner-button-dark buy">Buy!</button>
+                </form>
+            </a>
+                
         </div>
             {% else %}
             Couldn't find any items

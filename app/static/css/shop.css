@@ -1,26 +1,26 @@
+.fill{
+    background: #333;
+    height: calc(85px + 1vw);
+}
 
-.search{
-
+.search {
     color: #333;
     background-size: 100%;
-
     padding: 10vw 0 5vw;
     width: 80%;
     margin: 0 auto;
     text-align: center;
 }
 
-
-.search .search-container form{
+.search .search-container form {
     display: flex;
     justify-content: center;
     align-content: center;
 }
 
-
 .search-container input[type=text] {
     width: 50%;
-padding: 0 1rem;
+    padding: 0 1rem;
     font-size: 17px;
     height: 50px;
     border: none;
@@ -28,77 +28,84 @@ padding: 0 1rem;
     outline: none;
 }
 
-.search-container input[type=submit]{
+.search-container input[type=submit] {
     width: 5%;
     height: 50px;
-
-background: #333;
+    background: #333;
     color: white;
     border: 2px solid #333;
 }
 
-.all-items{
+.all-items {
     color: #333;
     background-size: 100%;
-
     padding: 0 0 10vw;
     width: 60%;
     margin: 0 auto;
     text-align: center;
 }
 
-
-.item{
-
-   display: flex;
-   font-size: 1.2rem;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   width: calc(250px + 1rem);
-   padding: .7rem .5rem;
-   border-radius:10px;
-   margin: 1rem;
-   background: lightgrey;
-  
- 
+.item {
+    display: flex;
+    font-size: 1.2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(250px + 1rem);
+    padding: .7rem .5rem;
+    border-radius: 10px;
+    margin: 1rem;
+    background: lightgrey;
 }
 
-.bold{
+.bold {
     font-weight: bold;
-
 }
-.items{
+
+.items {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-
 }
 
-
-.items img{
+.items img {
     width: 250px;
     height: 250px;
-    border-radius: 5px 5px 0 0 ;
-
+    border-radius: 5px 5px 0 0;
 }
 
-.item .buy{
-font-size: 1rem;
-padding: .3rem .5rem;
-background: #333;
-border-radius: 10px;
-color: white;
-cursor: pointer;
-border: none;
+.item .buy {
+    font-size: 1rem;
+    padding: .3rem .5rem;
 
+    border-radius: 10px;
+
+    cursor: pointer;
+    background: #f6f6f6;
+    width: 80%;
+    margin-top: .3rem;
 }
 
-.item-listing{
+.item-listing {
     background: #f6f6f6;
     width: 250px;
     border-radius: 0px 0px 5px 5px;
-    margin: .4rem 0 0 ;
+    margin: .4rem 0 0;
     padding: .5rem 0;
+}
 
+.item-listing .hideme,
+.item-listing .enemy-show {
+    display: none;
+}
+
+.item-8 .enemy-show,
+.item-9 .enemy-show,
+.item-10 .enemy-show,
+.item-11 .enemy-show {
+    display: block;
+}
+
+.side-by-side{
+    display: inline;
 }
