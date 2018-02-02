@@ -1,6 +1,11 @@
+<head>
+    <link rel="stylesheet" href="/static/css/shop.css">
+</head>
+
 {% extends "layout.html" %}
 {% block title %}Shop{% endblock %}
 {% block content %}
+<main>
     <div class="search-container">
         <form method="POST" name="search_form" action="/search">
           <input type="text" placeholder="Search.." name="search">
@@ -11,6 +16,17 @@
       <div id="error">{{ error }}</div>
     {% endif %}
     <div id="result"></div>
+
+
+    <div class="items">
+        {% for item in items %}
+            <a class="item item-{{ item['uuid'] }}">{{ item["name"] }} - {{ item["price"] }}$<button class="buy" id="{{ item['uuid'] }}">Buy</button></a>
+        {% else %}
+            Couldn't find any items
+        {% endfor %}
+    </div>
+<!--
+
     <ul class="items">
     {% for item in items %}
         <li class="item">{{ item["name"] }} - {{ item["price"] }}$<button class="buy" id="{{ item['uuid'] }}">Buy</button></li>
@@ -18,4 +34,8 @@
         Couldn't find any items
     {% endfor %}
     </ul>
+-->
+
+
+</main>
 {% endblock %}

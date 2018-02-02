@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="/static/css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="static/js/main.js"></script>
     <title>{% block title %}{% endblock %}</title>
@@ -19,21 +19,29 @@
     {% endif %}
 
     {% if session.token %}
-    <ul id="nav-bar">
+    <ul id="nav-bar-auth">
       <li class="nav-item"><a class="left-nav-item" href="{{ url_for('shop') }}">Team 1</a></li>
       <span class="bar"></span>
       <li class="nav-item"><a class="home" href="/">SPACESHOP</a></li>
       <span class="bar"></span>
       <li class="nav-item"><a class="right-nav-item" href="{{ url_for('logout') }}">Logout</a></li>
     </ul>
-    <ul id="sub-nav-bar">
-          <li class="sub-nav-item"><a href="{{ url_for('shop') }}">Shop</a></li>
-          <li class="sub-nav-item"><a href="{{ url_for('transfer') }}">Send</a></li>
+    <ul id="sub-nav-bar-auth">
+          <li class="sub-nav-item"><a href="{{ url_for('shop') }}">Buy</a></li>
+          <li class="sub-nav-item"><a href="{{ url_for('transfer') }}">Sell</a></li>
           <li class="sub-nav-item"><a href="{{ url_for('transfer') }}">Help</a></li>
     </ul>
     {% endif %}
     
     </header>
-    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="content">{% block content %}
+      
+      
+      
+      {% endblock %}</div>
+
+      <footer>
+        <h3>Made with ❤</h3>
+      </footer>
   </body>
 </html>

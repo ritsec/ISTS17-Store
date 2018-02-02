@@ -19,6 +19,11 @@ def send_css(path):
     """Serve our css files"""
     return send_from_directory('static/css', path)
 
+@APP.route('/assets/<path:path>')
+def send_assets(path):
+    """Serve our css files"""
+    return send_from_directory('assets', path)
+
 @APP.route('/', methods=['GET'])
 def index():
     """
