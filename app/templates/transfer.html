@@ -1,15 +1,23 @@
-{% extends "layout.html" %}
-{% block title %}Transfer{% endblock %}
-{% block content %}
+
+<head>
+        <link rel="stylesheet" href="/static/css/justforms.css">
+    </head>
+    {% extends "layout.html" %} {% block title %}Transfer{% endblock %} {% block content %}
+
+<section class="forms">
     {% if error %}
         <div id="error">{{ error }}</div>
     {% endif %}
     {% if complete %}
         <div id="complete">{{ complete }}</div>
     {% endif %}
+    <h3>Fund a friend! </h3>
     <form method='POST' name="transfer_form" action="/transfer">
-        Team Number: <input id="team" type="text" name="recipient"><br />
-        Amount: <input id="amount" type="text" name="amount"> <br />
-        <input type="submit" value="Submit">
+       <input id="team" type="text" name="recipient" placeholder="Recipient Team Number"><br/>
+       <br>
+       <input id="amount" type="text" name="amount" placeholder="Amount to Send"><br/>
+    <input type="submit" value="SEND!">
     </form><br />
+
+</section>
 {% endblock %}

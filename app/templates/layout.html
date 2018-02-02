@@ -12,7 +12,7 @@
     <ul id="nav-bar">
         <li class="nav-item"><a class="left-nav-item" href="{{ url_for('shop') }}">Shop</a></li>
         <span class="bar"></span>
-        <li class="nav-item"><a class="home" href="/">SPACESHOP</a></li>
+        <li class="nav-item"><a class="home" href="{{ url_for('login') }}">SPACESHOP</a></li>
         <span class="bar"></span>
         <li class="nav-item"><a class="right-nav-item" href="{{ url_for('login') }}">Login</a></li>
     </ul>
@@ -20,16 +20,16 @@
 
     {% if session.token %}
     <ul id="nav-bar-auth">
-      <li class="nav-item"><a class="left-nav-item" href="{{ url_for('shop') }}">Team 1</a></li>
+      <li class="nav-item"><a class="left-nav-item" href="{{ url_for('account') }}">TEAM</a></li>
       <span class="bar"></span>
-      <li class="nav-item"><a class="home" href="/">SPACESHOP</a></li>
+      <li class="nav-item"><a class="home" href="{{ url_for('account') }}">SPACESHOP</a></li>
       <span class="bar"></span>
       <li class="nav-item"><a class="right-nav-item" href="{{ url_for('logout') }}">Logout</a></li>
     </ul>
     <ul id="sub-nav-bar-auth">
           <li class="sub-nav-item"><a href="{{ url_for('shop') }}">Buy</a></li>
-          <li class="sub-nav-item"><a href="{{ url_for('transfer') }}">Sell</a></li>
-          <li class="sub-nav-item"><a href="{{ url_for('transfer') }}">Help</a></li>
+          <li class="sub-nav-item"><a href="{{ url_for('transfer') }}">Send</a></li>
+          <li class="sub-nav-item"><a href="{{ url_for('update_password') }}">Help</a></li>
     </ul>
     {% endif %}
     
