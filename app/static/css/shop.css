@@ -77,11 +77,11 @@
 .item .buy {
     font-size: 1rem;
     padding: .3rem .5rem;
-    background: #333;
+
     border-radius: 10px;
-    color: white;
+
     cursor: pointer;
-    border: none;
+    background: #f6f6f6;
     width: 80%;
     margin-top: .3rem;
 }

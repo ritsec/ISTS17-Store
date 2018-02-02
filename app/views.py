@@ -210,7 +210,7 @@ def shop():
     except AuthError:
         # this is returned to the js function that does a post request to /shop
         # the js function then displays this in the <div id="result">
-        return 'Please log in before trying to buy an item', 200
+        return redirect('/login')
 
     data = request.get_json()
     if data is None:
