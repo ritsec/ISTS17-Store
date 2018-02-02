@@ -241,7 +241,7 @@ def shop():
 
     # this is returned to the js function that does a post request to /shop
     # the js function then displays this in the <div id="result">
-    return "{} bought".format(boughten_item), 200
+    return render_template('shop.html', result="{} bought".format(boughten_item), items=items)
 
 @APP.route('/account', methods=['GET'])
 def account():
