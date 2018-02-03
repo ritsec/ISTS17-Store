@@ -9,9 +9,15 @@
 
     </section>
     {% endif %}
-<div id="result">
-    {{ result }}
-</div>
+
+    {% if result %}
+
+<div class="notification">
+        {{ result }}<br>
+        Thank you for your purchase!
+    </div>
+
+{% endif %}
 <section class="search">
      <div class="search-container">
         <form method="POST" name="search_form" action="/search">
@@ -22,10 +28,10 @@
     {% if error %}
       <div id="error">{{ error }}</div>
     {% endif %}
-    <div id="result"></div></section>
+    </section>
    
 <section class="all-items">
-
+        
     <div class="items">
         {% for item in items %}
         <div class="item">
@@ -64,6 +70,8 @@
         {% endfor %}
     </div>
 </section>
+
+
 <!--
 
     <ul class="items">
