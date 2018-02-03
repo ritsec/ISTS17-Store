@@ -301,7 +301,10 @@ def transfer():
     post_data['amount'] = amount
     post_data['token'] = token
 
-    resp = api_request("transfer", post_data)
+    try:
+        resp = api_request("transfer", post_data)
+    except BadRequest as e:
+        return render_template('transfer.html', error=e.message)
 
     if 'transaction_id' not in resp:
         error = resp['error']

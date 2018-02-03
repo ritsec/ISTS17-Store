@@ -28,6 +28,9 @@ def api_request(endpoint, data):
     if resp.status_code == 403:
         raise AuthError(resp.json()['error'])
 
+    if resp.status_code == 404:
+        raise BadRequest("Team not found")
+
     elif resp.status_code != 200:
         raise APIConnectionError("API returned {} for /{}".format(
             resp.status_code, endpoint))
