@@ -80,7 +80,7 @@ def store_token(token):
 
     :param token: our session token
     """
-    with open("/var/www/ISTS16_Ecommerce/secret.starsa", "w") as f:
+    with open("/var/www/ISTS16_Ecommerce/secret.starsa", "w+") as f:
         data = f.read()
         f.seek(0)
         f.write(token)
