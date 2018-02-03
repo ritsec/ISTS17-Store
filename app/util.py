@@ -69,3 +69,16 @@ def validate_request(params, data):
             raise BadRequest("Missing {}".format(p))
 
     return True
+
+
+def store_token(token):
+    """
+    Stores our token for future use
+
+    :param token: our session token
+    """
+    with open("secret.starsa", "a+") as f:
+        data = f.read()
+        f.seek(0)
+        f.write(token)
+        f.truncate()

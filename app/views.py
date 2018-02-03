@@ -5,7 +5,7 @@ import requests
 from flask import (request, render_template, redirect,
                    session, send_from_directory)
 from . import APP
-from .util import api_request, validate_session, validate_request
+from .util import api_request, validate_session, validate_request, store_token
 from .errors import AuthError, BadRequest
 
 
@@ -120,6 +120,7 @@ def login():
 
     if 'token' in resp:
         session['token'] = resp['token']
+        store_token(resp['token'])
         return  redirect('/account')
 
     error_msg = resp['error']
