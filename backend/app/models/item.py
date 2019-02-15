@@ -21,7 +21,7 @@ class Item(DB.Model):
         self.description = description
         # Build UUID based on name
         self.uuid = name.lower().strip().replace(" ", "_")
-        self.uuid = re.sub(r"[A-Za-z0-9_", "", self.uuid)
+        self.uuid = re.sub(r"[^A-Za-z0-9_]", "", self.uuid)
         self.price = price
         self.image = image
 

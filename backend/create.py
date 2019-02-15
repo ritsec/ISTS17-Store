@@ -7,12 +7,14 @@ from app.models.transaction import Transaction
 from app.models.item import Item
 DB.create_all()
 
-with open("items/items.yml") as fil:
+with open("../items/items.yml") as fil:
     ITEMS = yaml.load(fil)
 
 print('Adding items...')
 for item in ITEMS:
-    new_item = Item(name=item['name'], price=item['price'], image=item['image'])
+    new_item = Item(name=item['name'], price=item['price'],
+                    image=item['image'], description=item['description'])
+    print(item)
     DB.session.add(new_item)
 
 print('Done')

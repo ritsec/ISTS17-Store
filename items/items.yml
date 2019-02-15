@@ -1,53 +1,57 @@
 ---
 - name: MICAH HUG
   price: 100000
-  description:
+  description: ""
   image: "micah.jpg"
 - name: JOES LOVE
   price: 2500000
-  description:
+  description: ""
   image: "joe.jpg"
 - name: DON RANT
   price: 2000000
-  description:
+  description: ""
   image: "don.jpg"
 - name: Red Teamer hands off keyboard for 10 minutes
   price: 100000
-  description:
+  description: ""
   image: "handsoff.jpg"
 - name: Team loses 4 chairs for 5 minutes
   price: 100000
-  description:
+  description: ""
   image: "chairs.jpg"
 - name: Revert a King of the Hill VM
   price: 200000
-  description:
+  description: ""
   image: revert.jpg
 - name: Team loses a mouse for 5 minutes
   price: 75000
-  description:
+  description: ""
   image: mouse.jpg
 - name: Force a team to do a bucket list item
   price: 100000
-  description:
+  description: ""
   image: bucket.jpg
 - name: Ignore an attack
   price: 200000
-  description:
+  description: ""
   image: attack.jpg
 - name: White Team advice
   price: 100000
-  description:
+  description: ""
   image: advice.jpg
 - name: Red Team advice
   price: 150000
-  description:
-  image: advice2.jpg
+  description: ""
+  image: ""
 - name: Snapshot Revert
   price: 400000
-  description:
+  description: ""
   image: revert.jpg
 - name: Revert Raspberry Pi
   price: 300000
-  description:
+  description: ""
   image: pi.jpg
+- name: "Cut campeign uplink"
+  description: ""
+  price: 300000
+  image: uplink.jpg
