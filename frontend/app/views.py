@@ -5,7 +5,7 @@ import requests
 from flask import (request, render_template, redirect,
                    session, send_from_directory)
 from . import APP
-from .util import api_request, validate_session, validate_request, store_token
+from .util import api_request, validate_session, validate_request
 from .errors import AuthError, BadRequest
 
 
@@ -120,7 +120,6 @@ def login():
 
     if 'token' in resp:
         session['token'] = resp['token']
-        store_token(resp['token'])
         return  redirect('/account')
 
     error_msg = resp['error']
@@ -236,7 +235,7 @@ def shop():
 
     boughten_item = ""
     for item in items:
-        if int(item['uuid']) == int(item_id):
+        if item['uuid'] == item_id:
             boughten_item = item['name']
 
     # this is returned to the js function that does a post request to /shop

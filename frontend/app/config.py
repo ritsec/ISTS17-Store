@@ -9,3 +9,5 @@ SECRET_KEY = 'thenotsosecretkey'
 
 AUTH_ENDPOINTS = ['validate-session', 'login', 'update-password',
                   'expire-session', 'update-session', 'pub-key']
+
+AUTH_API_URL=os.environ.get("AUTH_API", "http://auth:5000")
