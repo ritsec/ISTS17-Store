@@ -41,7 +41,8 @@
               <img src="/assets/items/default.png">
             {% endif %}
         
-            <a class="item-listing item-{{ item['uuid'] }}"><span class="bold">{{ item["name"] }}</span><br> {{ item["price"] }}$<br>
+            <a class="item-listing item-{{ item['uuid'] }}"><span class="bold">
+                {{ item["name"]}}</span><br>${{ item["price"] }}<br>
                 
                 <form method="POST" name="target-form" action="/shop">
                     <input class="hideme" type="text" value="{{ item['uuid'] }}" name="item_id">
@@ -80,7 +81,7 @@
 
     <ul class="items">
     {% for item in items %}
-        <li class="item">{{ item["name"] }} - {{ item["price"] }}$<button class="buy" id="{{ item['uuid'] }}">Buy</button></li>
+        <li class="item">${{ item["name"] }} - {{ item["price"] }}<button class="buy" id="{{ item['uuid'] }}">Buy</button></li>
     {% else %}
         Couldn't find any items
     {% endfor %}
