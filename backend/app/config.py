@@ -16,7 +16,16 @@ class ErrorFilter(logging.Filter):
 AUTH_API_URL = "http://lilbite.org:9000"
 SHIP_API_URL = "http://lilbite.org:6000"
 
-SQLALCHEMY_DATABASE_URI = 'mysql://root:youwontguess23$@localhost/ists'
+
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/{}'.format(
+    os.environ.get("MYSQL_USER", "root"),
+    os.environ.get("MYSQL_PASS", "youwontguess23$"),
+    os.environ.get("MYSQL_SERVER", "0.0.0.0"),
+    os.environ.get("MYSQL_PATH", "ists"))
+
+
+
+#SQLALCHEMY_DATABASE_URI = 'mysql://root:youwontguess23$@localhost/ists'
 
 #WHITETEAM_SLACK_URI = "https://hooks.slack.com/services/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"
 #REDTEAM_SLACK_URI ="https://hooks.slack.com/services/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"

@@ -6,6 +6,6 @@ COPY backend /opt/app
 
 WORKDIR /opt/app
 
-RUN pip3 install -r requirements2.txt
+RUN pip3 install -r requirements.txt
 
 CMD python3 run.py
