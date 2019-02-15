@@ -3,7 +3,6 @@ Configuration settings.
 """
 import os
 
-AUTH_API_URL=os.environ.get("AUTH_API", "http://auth:5000")
 
 # MYSQL settings, pulled from the environment, matches up with the mysql docker
 # image on dockerhub
@@ -18,4 +17,3 @@ SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/{}'.format(
     mysql_pass,
     os.environ.get("MYSQL_SERVER", "0.0.0.0"),
     os.environ.get("MYSQL_DATABASE", "ists"))
-print(SQLALCHEMY_DATABASE_URI)

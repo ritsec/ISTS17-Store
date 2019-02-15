@@ -2,7 +2,8 @@
     File to hold utility functions
 """
 import requests
-#from .config import (AUTH_API_URL, WHITETEAM_SLACK_URI, CHANNEL, SLACK_USERNAME,
+from .config import AUTH_API_URL 
+# WHITETEAM_SLACK_URI, CHANNEL, SLACK_USERNAME,
 #                     ICON_EMOJI, REDTEAM_SLACK_URI, SHIP_API_URL)
 from .models.item import Item
 from .models.session import Session

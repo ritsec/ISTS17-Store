@@ -2,7 +2,7 @@ FROM alpine:latest
 
 RUN apk add --update python3 python3-dev gcc musl-dev libffi-dev openssl-dev
 
-COPY backend /opt/app
+COPY auth /opt/app
 
 WORKDIR /opt/app
 

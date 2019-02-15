@@ -1,0 +1,33 @@
+---
+accounts:
+  whiteteam:
+    username: "whiteteam"
+    password: "democracy-beans-1337"
+    balance: 100000000
+    uuid: 1337
+  redteam:
+    username: "praxis"
+    password: "changeme2017"
+    balance: 1
+    uuid: 99
+  scoring:
+    username: "scoring"
+    password: "changeme"
+    balance: 0
+    uuid: 47
+  blueteam:
+    balance: 1
+    passwords:
+      - changeme1
+      - changeme2
+      - changeme3
+      - changeme4
+      - changeme5
+      - changeme6
+      - changeme7
+      - changeme8
+      - changeme9
+      - changeme10
+      - changeme11
+      - changeme12
+      - changeme13

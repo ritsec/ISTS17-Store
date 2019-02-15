@@ -1,22 +1,44 @@
 version: '3'
 services:
+    auth:
+        ports:
+            - "5002:5000"
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-auth
+        env_file:
+            - environment.sh
     frontend:
         ports:
             - "5000:5000"
         build:
             context: .
             dockerfile: docker/Dockerfile-frontend
-        environment:
-            - "FLASK_HOST=0.0.0.0"
-            - "FLASK_PORT=5000"
-            - "STORE_API=http://backend:5000"
+        #environment:
+        #    - "FLASK_HOST=0.0.0.0"
+        #    - "FLASK_PORT=5000"
+        #    - "STORE_API=http://backend:5000"
+        env_file:
+            - environment.sh
     backend:
         ports:
             - "5001:5000"
         build:
             context: .
             dockerfile: docker/Dockerfile-backend
-        environment:
-            - "FLASK_HOST=0.0.0.0"
-            - "FLASK_PORT=5000"
-            - "MYSQL_SERVER=192.168.58.129"
+        env_file:
+            - environment.sh
+    
+    database:
+        image: "mysql:latest"
+        env_file:
+            - environment.sh
+        #environment:
+        #    - "MYSQL_ROOT_HOST=%"
+        #    - "MYSQL_DATABASE=ists"
+        #    - "MYSQL_SERVER=database"
+        #    - "MYSQL_USER=whiteteam"
+        #    - "MYSQL_ROOT_PASSWORD=youwontguess23#"
+        #    - "MYSQL_PASSWORD=youwontguess23#"
+        volumes:
+            - /var/lib/mysql:/var/lib/mysql
