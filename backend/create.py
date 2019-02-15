@@ -1,15 +1,18 @@
 """
     Create our database and fill it with items
 """
+import yaml
 from app import DB
 from app.models.transaction import Transaction
 from app.models.item import Item
-from app.config import ITEMS
 DB.create_all()
+
+with open("items/items.yml") as fil:
+    ITEMS = yaml.load(fil)
 
 print('Adding items...')
 for item in ITEMS:
-    new_item = Item(name=item['name'], price=item['price'])
+    new_item = Item(name=item['name'], price=item['price'], image=item['image'])
     DB.session.add(new_item)
 
 print('Done')

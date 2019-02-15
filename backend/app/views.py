@@ -383,7 +383,9 @@ def get_items():
     for i in items:
         item_dict = dict()
         item_dict['name'] = i.__dict__['name']
+        item_dict['description'] = i.__dict__['description']
         item_dict['price'] = i.__dict__['price']
+        item_dict['image'] = i.__dict__['image']
         item_dict['uuid'] = i.__dict__['uuid']
         result['items'].append(item_dict)
 
