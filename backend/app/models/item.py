@@ -14,6 +14,7 @@ class Item(DB.Model):
     description = DB.Column(DB.String(512))
     image = DB.Column(DB.String(128))
     price = DB.Column(DB.Integer)
+    order = DB.Column(DB.Integer, autoincrement=True)
 
 
     def __init__(self, name=None, description="", price=None, image=None):

@@ -379,7 +379,7 @@ def get_items():
     """
     result = dict()
     result['items'] = []
-    items = Item.query.all()
+    items = Item.query.order_by(Item.price).all()
     for i in items:
         item_dict = dict()
         item_dict['name'] = i.__dict__['name']
