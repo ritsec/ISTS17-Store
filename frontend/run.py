@@ -1,2 +1,5 @@
+import os
 from app import APP
-APP.run(host='localhost', port=8000, debug=True, threaded=True)
+host=os.environ.get("FLASK_HOST", "0.0.0.0")
+port=os.environ.get("FLASK_PORT", 5000)
+APP.run(host=host, port=port, debug=True, threaded=True)

@@ -15,7 +15,6 @@ def api_request(endpoint, data):
 
     :returns resp: the api response
     """
-    print data
     if endpoint in AUTH_ENDPOINTS:
         url = "{}/{}".format(AUTH_API_URL, endpoint)
     else:

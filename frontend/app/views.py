@@ -236,7 +236,6 @@ def shop():
 
     boughten_item = ""
     for item in items:
-        print item
         if int(item['uuid']) == int(item_id):
             boughten_item = item['name']
 
@@ -252,7 +251,6 @@ def account():
     except AuthError:
         return redirect('/login')
 
-    print token
     post_data = dict()
     post_data['token'] = token
 
