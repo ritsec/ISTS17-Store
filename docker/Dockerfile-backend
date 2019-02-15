@@ -1,0 +1,11 @@
+FROM alpine:latest
+
+RUN apk add --update python3
+
+COPY backend /opt/app
+
+WORKDIR /opt/app
+
+RUN pip3 install -r requirements2.txt
+
+CMD python3 run.py

@@ -2,8 +2,8 @@
     File to hold utility functions
 """
 import requests
-from .config import (AUTH_API_URL, WHITETEAM_SLACK_URI, CHANNEL, SLACK_USERNAME,
-                     ICON_EMOJI, REDTEAM_SLACK_URI, SHIP_API_URL)
+#from .config import (AUTH_API_URL, WHITETEAM_SLACK_URI, CHANNEL, SLACK_USERNAME,
+#                     ICON_EMOJI, REDTEAM_SLACK_URI, SHIP_API_URL)
 from .models.item import Item
 from .models.session import Session
 from .errors import RequestError, AuthError, TransactionError
@@ -36,7 +36,7 @@ def auth_api_request(endpoint, data):
 
     :returns resp: the api response
     """
-    print data
+    print(data)
     url = "{}/{}".format(AUTH_API_URL, endpoint)
 
     resp = requests.post(url, data=data)
@@ -87,6 +87,7 @@ def post_slack(message, team='white'):
     :param message: the message to post to slack
     :param team: the slack team to post to
     """
+    '''
     post_data = dict()
     post_data["text"] = message
     post_data["channel"] = CHANNEL
@@ -101,6 +102,8 @@ def post_slack(message, team='white'):
         slack_uri = WHITETEAM_SLACK_URI
 
     requests.post(slack_uri, json=post_data)
+    '''
+    pass
 
 def ship_api_request(token, item, team_id, enemy_id):
     """
@@ -112,7 +115,7 @@ def ship_api_request(token, item, team_id, enemy_id):
     :param enemy_id: the id of the enemy team if they bought a powerup against them
     """
     post_data = dict()
-    print "Make request for {} by {}".format(item, team_id)
+    print("Make request for {} by {}".format(item, team_id))
     # for this type of request we need white team token
     if enemy_id is not None:
         sesh = Session.query.filter_by(uuid=1337).first()

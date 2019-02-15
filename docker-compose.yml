@@ -1,0 +1,21 @@
+version: '3'
+services:
+    frontend:
+        ports:
+            - "5000:5000"
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-frontend
+        environment:
+            - "FLASK_HOST=0.0.0.0"
+            - "FLASK_PORT=5000"
+            - "STORE_API=http://backend:5000"
+    backend:
+        ports:
+            - "5001:5000"
+        build:
+            context: .
+            dockerfile: docker/Dockerfile-backend
+        environment:
+            - "FLASK_HOST=0.0.0.0"
+            - "FLASK_PORT=5000"

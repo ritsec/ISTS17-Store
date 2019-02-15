@@ -18,19 +18,19 @@ SHIP_API_URL = "http://lilbite.org:6000"
 
 SQLALCHEMY_DATABASE_URI = 'mysql://root:youwontguess23$@localhost/ists'
 
-WHITETEAM_SLACK_URI = "https://hooks.slack.com/services/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"
-REDTEAM_SLACK_URI ="https://hooks.slack.com/services/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"
-CHANNEL = "#white-team-tool"
-SLACK_USERNAME = "White Team Store"
-ICON_EMOJI = ":money_with_wings:"
+#WHITETEAM_SLACK_URI = "https://hooks.slack.com/services/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"
+#REDTEAM_SLACK_URI ="https://hooks.slack.com/services/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"
+#CHANNEL = "#white-team-tool"
+#SLACK_USERNAME = "White Team Store"
+#ICON_EMOJI = ":money_with_wings:"
 
-SHIP_API_ALERT_ITEMS = ['x1 Strikers', 'Health +50%', 'Damage +50%',
-                        'Speed +50%', 'Enemy Health -25%', 'Enemy Damage -25%',
-                        'Enemy Speed -25%', 'Destroy an enemy ship']
+#SHIP_API_ALERT_ITEMS = ['x1 Strikers', 'Health +50%', 'Damage +50%',
+#                        'Speed +50%', 'Enemy Health -25%', 'Enemy Damage -25%',
+#                        'Enemy Speed -25%', 'Destroy an enemy ship']
 
-RED_TEAM_ALERT_ITEMS = ['Snapshot Revert', 'Revert Raspberry Pi']
+#RED_TEAM_ALERT_ITEMS = ['Snapshot Revert', 'Revert Raspberry Pi']
 
-
+'''
 LOG_CONFIG = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -52,7 +52,7 @@ LOG_CONFIG = {
             'level': 'DEBUG',
             'formatter': 'standard',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename':  '/var/www/ISTS16-Backend/app/logs/info.log',
+            'filename':  '/var/log/flask/info.log',
             'mode': 'a',
             'backupCount': '16',
             'filters': ['info_filter']
@@ -61,7 +61,7 @@ LOG_CONFIG = {
             'level': 'ERROR',
             'formatter': 'standard',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename':  '/var/www/ISTS16-Backend/app/logs/error.log',
+            'filename':  '/var/log/flask/error.log',
             'mode': 'a',
             'backupCount': '16',
             'filters': ['error_filter']
@@ -71,7 +71,7 @@ LOG_CONFIG = {
         'api_log': {'handlers': ['info', 'error'], 'level': 'DEBUG', 'propagate': False},
     }
 }
-
+'''
 ITEMS = [
     {
         'name': 'MICAH HUG',
