@@ -1,0 +1,93 @@
+<head>
+        <link rel="stylesheet" href="/static/css/shop.css">
+    </head>
+    {% extends "layout.html" %} {% block title %}Shop{% endblock %} {% block content %}
+
+    {% if not session.token %}
+    <section class="fill">
+
+
+    </section>
+    {% endif %}
+
+    {% if result %}
+
+<div class="notification">
+        {{ result }}<br>
+        Thank you for your purchase!
+    </div>
+
+{% endif %}
+<section class="search">
+     <div class="search-container">
+        <form method="POST" name="search_form" action="/search">
+          <input type="text" placeholder="Whatcha looking for?" name="search">
+          <input type="submit" value="GO!">
+        </form>
+      </div>
+    {% if error %}
+      <div id="error">{{ error }}</div>
+    {% endif %}
+</section>
+   
+<section class="all-items">
+        
+    <div class="items">
+        {% for item in items %}
+        <div class="item">
+            {% if item.image %}
+              <img src="/assets/items/{{item['image']}}">
+            {% else %}
+              <img src="/assets/items/default.png">
+            {% endif %}
+        
+            <a class="item-listing item-{{ item['uuid'] }}"><span class="bold">
+                {{ item["name"]}}</span><br>${{ item["price"] }}<br>
+                
+                <form method="POST" name="target-form" action="/shop">
+                    <input class="hideme" type="text" value="{{ item['uuid'] }}" name="item_id">
+                    <!--input class="enemy-show" type="text" placeholder="Target" name="enemy_id"-->
+                    <span class="enemy-show">
+                            Target: 
+                <select class="target" name="enemy_id"> 
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+
+                          </select>
+                        </span>
+
+                    <button class="corner-button-dark buy">Buy!</button>
+                </form>
+            </a>
+                
+        </div>
+            {% else %}
+            Couldn't find any items
+        {% endfor %}
+    </div>
+</section>
+
+
+<!--
+
+    <ul class="items">
+    {% for item in items %}
+        <li class="item">${{ item["name"] }} - {{ item["price"] }}<button class="buy" id="{{ item['uuid'] }}">Buy</button></li>
+    {% else %}
+        Couldn't find any items
+    {% endfor %}
+    </ul>
+-->
+
+
+
+{% endblock %}

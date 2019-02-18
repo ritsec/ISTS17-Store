@@ -1,0 +1,129 @@
+<head>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+{% extends "layout.html" %} {% block title %}Login{% endblock %} {% block content %}
+
+<!--
+<div id="css-only-modals">
+        <input id="modal1" class="css-only-modal-check" type="checkbox" checked/>
+        <div class="css-only-modal">
+            <label for="modal1" class="css-only-modal-close"><i class="fa fa-times fa-2x"></i>X</label>
+            <h2>Login to the Spaceshop!</h2>
+            <hr/>
+            {% if error %}
+            <div id="error">{{ error }}</div>
+            {% endif %}
+            <form method='POST' name="login_form" action="/login">
+            Username: <input id="username" type="text" name="username"><br />
+            Password: <input id="password" type="password" name="password"><br />
+            <input type="submit" value="Beam me up, fam">
+            </form>
+            <label for="modal1" class="css-only-modal-btn btn btn-primary btn-lg">Nevermind</label>
+                
+        </div>
+    <div id="screen-shade"></div>
+    </div>
+-->
+<div id="modals">
+        <input id="modal1" class="modal-check" type="checkbox" checked/>
+        <div class="modal">
+            <label for="modal1" class="modal-close">X</label>
+            <h2>Finna go hyperspace</h2>
+            <hr/>
+             {% if error %}
+                <div id="error">{{ error }}</div>
+            {% endif %}
+            <form method='POST' class="login-form" name="login_form" action="/login">
+                <input id="username" type="text" name="username" placeholder="Username"><br />
+                <input id="password" type="password" name="password" placeholder="Password"><br />
+                <button type="submit">Beam me up, fam</button>
+                </form>
+    
+        </div>
+        
+    <div id="screen-shade"></div>
+    </div>
+
+
+
+<!--
+<div id="modals">
+	<input id="modal1" class="modal-check" type="checkbox" checked/>
+	<div class="modal">
+		<label for="modal1" class="modal-close">X</label>
+		<h2>Finna go hyperspace</h2>
+        <hr/>
+		 {% if error %}
+            <div id="error">{{ error }}</div>
+        {% endif %}
+        <form method='POST' name="login_form" class="login-form" action="/login">
+            <input id="username" type="text" placeholder="username">
+            <input id="password" type="password" placeholder="password">
+            <input type="submit" value="Beam me up, fam">
+      
+          </form>
+
+    </div>
+    
+<div id="screen-shade"></div>
+</div>-->
+
+
+<section class="hero">
+    <h2>Black Hole Friday Sale!</h2>
+    <h4>Limited time only. Parts up to 80% off!</h4>
+    <a class="button corner-button-light" href="/shop">View Sale</a>
+</section>
+
+<section class="we-buy-mined-stuff">
+    <h2>What's mined is mine!</h2>
+    <h5>We pay premium prices for your resources!</h5>
+    <img src="/assets/we-buy-mined-stuff.jpg">
+</section>
+
+<section class="featured-items">
+    <h2>Featured Items</h2>
+    <div class="items">
+        <div class="item big-item">
+            <div>
+            <p class="title">
+                Micah's <br>Famous Hug
+            </p><br>
+            <p class="price">
+                    $1000
+                </p>
+            </div>
+            <img src="/assets/item-1.jpg">
+            
+        </div>
+        <div class="item small-item">
+            <img src="/assets/item-2.jpg">
+            <p class="title">
+                    Joe's Everlasting Love
+                </p><br>
+            <p class="price">
+                $69000
+            </p>
+        </div>
+        <div class="item small-item">
+
+            <img src="/assets/item-3.jpg">
+            <p class="title">
+                    Don's Diaphram Rant
+                </p><br>
+            <p class="price">
+                $12000000
+            </p>
+        </div>
+
+    </div>
+    <a class="button corner-button-dark" href="/shop">Start Splurging Already</a>
+
+</section>
+
+<section>
+
+</section>
+
+
+{% endblock %}

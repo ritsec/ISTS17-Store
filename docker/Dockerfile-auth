@@ -1,0 +1,11 @@
+FROM alpine:latest
+
+RUN apk add --update python3 python3-dev gcc musl-dev libffi-dev openssl-dev
+
+COPY auth /opt/app
+
+WORKDIR /opt/app
+
+RUN pip3 install -r requirements.txt
+
+CMD python3 run.py
