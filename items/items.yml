@@ -22,7 +22,7 @@
 - name: Revert a King of the Hill VM
   price: 200000
   description: ""
-  image: revert.jpg
+  image: koth.jpg
 - name: Team loses a mouse for 5 minutes
   price: 75000
   description: ""
