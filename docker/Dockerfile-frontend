@@ -2,12 +2,14 @@ FROM alpine:latest
 
 RUN apk add --update python3
 
-COPY frontend /opt/app
+COPY frontend/requirements.txt /tmp/
+
+RUN pip3 install -r /tmp/requirements.txt
 
 WORKDIR /opt/app
 
-COPY items/images app/assets/items
+COPY frontend /opt/app
 
-RUN pip3 install -r requirements.txt
+COPY items/images app/assets/items
 
 CMD python3 run.py

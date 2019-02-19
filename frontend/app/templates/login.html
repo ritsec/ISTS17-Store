@@ -28,7 +28,7 @@
         <input id="modal1" class="modal-check" type="checkbox" checked/>
         <div class="modal">
             <label for="modal1" class="modal-close">X</label>
-            <h2>Finna go hyperspace</h2>
+            <h2>Enter the Black Market</h2>
             <hr/>
              {% if error %}
                 <div id="error">{{ error }}</div>
@@ -36,7 +36,7 @@
             <form method='POST' class="login-form" name="login_form" action="/login">
                 <input id="username" type="text" name="username" placeholder="Username"><br />
                 <input id="password" type="password" name="password" placeholder="Password"><br />
-                <button type="submit">Beam me up, fam</button>
+                <button type="submit">"It's cool, he's with me"</button>
                 </form>
     
         </div>
@@ -70,15 +70,17 @@
 
 
 <section class="hero">
-    <h2>Black Hole Friday Sale!</h2>
-    <h4>Limited time only. Parts up to 80% off!</h4>
-    <a class="button corner-button-light" href="/shop">View Sale</a>
+    <div class="black">
+    <h2>Economy Crash!</h2>
+    <h4>Limited time only. Everything 80% off!</h4>
+    <a class="button corner-button-light" href="/shop">Market Rates</a>
+    </div>
 </section>
 
 <section class="we-buy-mined-stuff">
-    <h2>What's mined is mine!</h2>
-    <h5>We pay premium prices for your resources!</h5>
-    <img src="/assets/we-buy-mined-stuff.jpg">
+    <h2>Get your moneys worth!</h2>
+    <h5>Votes = $$. Artificially increase your voting count here!</h5>
+    <img src="/assets/votes.png">
 </section>
 
 <section class="featured-items">
@@ -89,31 +91,22 @@
             <p class="title">
                 Micah's <br>Famous Hug
             </p><br>
-            <p class="price">
-                    $1000
-                </p>
             </div>
-            <img src="/assets/item-1.jpg">
+            <img src="/assets/items/micah.jpg">
             
         </div>
         <div class="item small-item">
-            <img src="/assets/item-2.jpg">
+            <img src="/assets/items/joe.jpg">
             <p class="title">
                     Joe's Everlasting Love
                 </p><br>
-            <p class="price">
-                $69000
-            </p>
         </div>
         <div class="item small-item">
 
-            <img src="/assets/item-3.jpg">
+            <img src="/assets/items/don.jpg">
             <p class="title">
                     Don's Diaphram Rant
                 </p><br>
-            <p class="price">
-                $12000000
-            </p>
         </div>
 
     </div>

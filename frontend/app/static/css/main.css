@@ -2,6 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+* {
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace !important;
+} 
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -97,7 +100,7 @@ text-align: center;
 
 }
 #nav-bar-auth *, #sub-nav-bar-auth *{
-	color: #333;
+	color: #fff;
 }
 .sub-nav-item{
     display: inline;
@@ -121,10 +124,6 @@ text-align: center;
     background: white;
     height: 3px;
     width: 35%;
-}
-#nav-bar-auth .bar, #sub-nav-bar-auth .bar{
-    background: #333;
-
 }
 .nav-item a {
     display: block;
@@ -192,3 +191,6 @@ text-align: center;
 	  background: #333;
 
   }
+header {
+  background-color: rgba(0, 0, 0, 1);
+}

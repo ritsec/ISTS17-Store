@@ -1,3 +1,8 @@
+* {
+
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace !important;
+}
+
 #modals {
 	position: fixed;
 	pointer-events: none;
@@ -131,11 +136,19 @@
 
 
 .hero{
-    background: url(/assets/hero.jpg) no-repeat;
+    background: url(/assets/bg.png) no-repeat;
     background-size: 100%;
     color: white;
-    padding: 30vh 0 30vh 10vw;
+    padding: 30vh 0 30vh 0vw;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+}
 
+.hero .black {
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 100%;
+    padding: 30vh 0 30vh 10vw;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .hero h2{
@@ -176,7 +189,7 @@
 
 }
 .we-buy-mined-stuff img{
-    width: 100%;
+    width: 70%;
     padding: 1rem 0;
 }
 

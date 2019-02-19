@@ -1,7 +1,7 @@
 
 
 <head>
-        <link rel="stylesheet" href="/static/css/account.css">
+    <link rel="stylesheet" href="/static/css/account.css">
     </head>
     {% extends "layout.html" %} {% block title %}Account{% endblock %} {% block content %}
     
@@ -10,18 +10,23 @@
  
         
         
-    <h3>Your $$</h3>
+    <h3>Your cash</h3>
     <h3 id="balance">${{ balance }}</h3>
     </section>
 
     <section class="history">
-        <h4>All Your History, Secure in the Rockchain</h4><br>
+        <h4>All Your History, Secured in offshore bank accounts</h4><br>
         <ul>
         {% for tx in transactions %}
-            <li><span class="larger">{{ tx["desc"] }}</span><br><br>{{ tx["time"] }} - {{ tx["src"] }} - {{ tx["dst"] }} - {{ tx["amount"] }}$<hr></li>
+            <li><span class="larger">{{ tx["desc"] }}</span>
+            <br><br>{{ tx["time"] }} - {{ tx["src"] }} - {{ tx["dst"] }} - {{ tx["amount"] }}$<hr></li>
         {% else %}
             No transactions yet
+            <br>
+            <br>
+            <br>
         {% endfor %}
+
         </ul>
     </section>
     <section class="fin">
