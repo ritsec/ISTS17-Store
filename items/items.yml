@@ -1,57 +1,78 @@
 ---
-- name: Socialist Enlightement From Nick
-  price: 100000
-  description: "Get a TLDR on why socialism is not only cool, but best for the country from Nick"
-  image: "nick.jpg"
-- name: JOES LOVE
-  price: 2500000
+- name: "Buy votes (1 vote per purchase)"
   description: ""
-  image: "joe.jpg"
-- name: DON RANT
-  price: 2000000
+  price: 100
+  image: buying-votes.jpg
+- name: "Shutdown voting booth (1 minute closed per purchase)"
   description: ""
-  image: "don.jpg"
-- name: Red Teamer hands off keyboard for 10 minutes
+  price: 1,000
+  image: uplink.jpg
+- name: "Red Teamer hands off keyboard for 10 minutes"
   price: 100000
   description: ""
   image: "handsoff.jpg"
-- name: Team loses 4 chairs for 5 minutes
+- name: "Team loses 4 chairs for 5 minutes"
   price: 100000
   description: ""
   image: "chairs.jpg"
-- name: Revert a King of the Hill VM
-  price: 200000
-  description: ""
-  image: koth.jpg
-- name: Team loses a mouse for 5 minutes
-  price: 75000
-  description: ""
-  image: mouse.jpg
-- name: Force a team to do a bucket list item
-  price: 100000
-  description: ""
-  image: bucket.jpg
-- name: Ignore an attack
-  price: 200000
-  description: ""
-  image: attack.jpg
-- name: White Team advice
-  price: 100000
-  description: ""
-  image: advice.jpg
-- name: Red Team advice
-  price: 150000
-  description: ""
-  image: ""
-- name: Snapshot Revert
-  price: 400000
-  description: ""
-  image: revert.jpg
-- name: Revert Raspberry Pi
-  price: 300000
-  description: ""
-  image: pi.jpg
-- name: "Cut campeign uplink"
+- name: "Cut campaign uplink"
   description: ""
   price: 300000
   image: uplink.jpg
+- name: "Revert a King of the Hill VM"
+  price: 200000
+  description: ""
+  image: koth.jpg
+- name: "Team loses a mouse for 5 minutes"
+  price: 75000
+  description: ""
+  image: mouse.jpg
+- name: "Force a team to do a bucket list item"
+  price: 100000
+  description: ""
+  image: bucket.jpg
+- name: "Ignore an attack"
+  price: 200000
+  description: ""
+  image: attack.jpg
+- name: "White Team advice"
+  price: 100000
+  description: ""
+  image: advice.jpg
+- name: "Red Team advice"
+  price: 150000
+  description: ""
+  image: ""
+- name: "Snapshot Revert"
+  price: 400000
+  description: ""
+  image: revert.jpg
+- name: "Revert Raspberry Pi"
+  price: 300000
+  description: ""
+  image: pi.jpg
+- name: "Air propaganda campaign about another team, targeted blue team must explain themselves to everyone"
+  description: "White team member will read out smear of another team (Safe for work), targeted blue team must explain themselves to everyone"
+  price: 50000
+  Image: propaganda.jpg
+- name: "Force political opponents to appear and read a script (500 words max, SFW, white team approved)"
+  description: ""
+  price: 150000
+  Image: speech.jpg
+- name: "Frivolous lawsuit, one other blue team member hands off keyboard 5 mins (max one per team)"
+  description: ""
+  price: 150000
+  Image: lawsuit.jpg
+- name: "Big brother is watching, allow one member of your team to look over another team's shoulders for 5 minutes unhindered"
+  description: ""
+  price: 200000
+  Image: big-brother.jpg
+- name: "Embarrassing college essay, force a member of another blue team to write a 300 word or more essay about a specified topic, they can't do anything else unless it is done,must be approved by white team, white team reads it out after done."
+  description: ""
+  price: 200000
+  Image: big-brother.jpg
+- name: "Interrogation, blue team member get interviewed for 5 minutes by the Hackistan Special Counsel Investigation Team, one per team."
+  description: ""
+  price: 250000
+  Image: interrogation.jpg
+
