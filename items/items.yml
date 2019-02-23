@@ -5,7 +5,7 @@
   image: buying-votes.jpg
 - name: "Shutdown voting booth (1 minute closed per purchase)"
   description: ""
-  price: 1,000
+  price: 1000
   image: uplink.jpg
 - name: "Red Teamer hands off keyboard for 10 minutes"
   price: 100000
