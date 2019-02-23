@@ -7,7 +7,7 @@ from app.models.transaction import Transaction
 from app.models.item import Item
 DB.create_all()
 
-with open("../items/items.yml") as fil:
+with open("items.yml") as fil:
     ITEMS = yaml.load(fil)
 
 print('Adding items...')
