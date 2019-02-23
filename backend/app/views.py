@@ -11,6 +11,9 @@ from . import errors
 from .util import validate_request, validate_session, post_slack, ship_api_request
 #from .config import SHIP_API_ALERT_ITEMS, RED_TEAM_ALERT_ITEMS
 
+# Import the admin views
+from .admin_views import *
+
 """
     REGULAR ROUTES
 """
