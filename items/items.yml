@@ -41,7 +41,7 @@
   image: advice.jpg
 - name: "Red Team advice"
   price: 150000
-  description: ""
+  description: " "
   image: ""
 - name: "Snapshot Revert"
   price: 400000
@@ -54,25 +54,32 @@
 - name: "Air propaganda campaign about another team, targeted blue team must explain themselves to everyone"
   description: "White team member will read out smear of another team (Safe for work), targeted blue team must explain themselves to everyone"
   price: 50000
-  Image: propaganda.jpg
+  image: propaganda.jpg
 - name: "Force political opponents to appear and read a script (500 words max, SFW, white team approved)"
   description: ""
   price: 150000
-  Image: speech.jpg
+  image: speech.jpg
 - name: "Frivolous lawsuit, one other blue team member hands off keyboard 5 mins (max one per team)"
   description: ""
   price: 150000
-  Image: lawsuit.jpg
+  image: lawsuit.jpg
 - name: "Big brother is watching, allow one member of your team to look over another team's shoulders for 5 minutes unhindered"
   description: ""
   price: 200000
-  Image: big-brother.jpg
+  image: big-brother.jpg
 - name: "Embarrassing college essay, force a member of another blue team to write a 300 word or more essay about a specified topic, they can't do anything else unless it is done,must be approved by white team, white team reads it out after done."
   description: ""
   price: 200000
-  Image: big-brother.jpg
+  image: big-brother.jpg
 - name: "Interrogation, blue team member get interviewed for 5 minutes by the Hackistan Special Counsel Investigation Team, one per team."
   description: ""
   price: 250000
-  Image: interrogation.jpg
-
+  image: interrogation.jpg
+- name: Socialist Enlightement From Nick
+  price: 100000
+  description: "Get a TLDR on why socialism is not only cool, but best for the country from Nick"
+  image: "nick.jpg"
+- name: JOES LOVE
+  price: 2500000
+  description: ""
+  image: "joe.jpg"
