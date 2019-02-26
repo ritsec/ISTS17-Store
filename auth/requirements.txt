@@ -1,14 +1,8 @@
-#cffi==1.7.0
 cryptography
 flask_sqlalchemy
 flask_cors
-#httplib2==0.10.3
-#ipaddress==1.0.16
-#itsdangerous==0.24
 Jinja2
-#paramiko==2.1.1
 pycrypto
-#pylint
 PyYAML
 requests
 pymysql

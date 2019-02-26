@@ -9,7 +9,7 @@ from app.models.session import Session
 DB.create_all()
 
 
-with open("../users.yml") as fil:
+with open("users.yml") as fil:
     config = yaml.load(fil)
 
 
@@ -49,7 +49,7 @@ passwords = bt.get("passwords", [])
 for team in range(1, len(passwords)+1):
     new_team = Team(uuid=team, username='team{}'.format(team),
                     password=passwords[team-1], balance=bt.get("balance", 0),
-                    pub_key=None, 
+                    pub_key=None,
                     private_key=None)
     new_session = Session(uuid=team)
 
